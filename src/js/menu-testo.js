@@ -7,7 +7,7 @@ import { applicaSpazioDopo, spazioCorrente } from "./spazio-paragrafi.js";
 import { applicaStileParagrafo, stileCorrente } from "./stili-documento.js";
 
 const ZONE = "#foglio, #intestazione-foglio, #pie-foglio";
-const ESCLUSI = "td[data-cella], .blocco-immagine, .blocco-tabella, input, textarea, select, button";
+const ESCLUSI = "td[data-cella], .blocco-immagine, .blocco-forma, .blocco-tabella, input, textarea, select, button";
 const COMANDI = ["bold", "italic", "underline", "strikeThrough", "justifyLeft", "justifyCenter", "justifyRight", "justifyFull", "insertUnorderedList", "insertOrderedList"];
 
 let memoria = null;
@@ -115,7 +115,7 @@ function bloccoNellaZona(nodo, zona) {
   if (elemento === zona) return null;
   while (elemento.parentElement && elemento.parentElement !== zona) elemento = elemento.parentElement;
   if (elemento.parentElement !== zona) return null;
-  if (elemento.classList.contains("taglio-pagina") || elemento.classList.contains("blocco-tabella") || elemento.classList.contains("blocco-immagine")) return null;
+  if (elemento.classList.contains("taglio-pagina") || elemento.classList.contains("blocco-tabella") || elemento.classList.contains("blocco-immagine") || elemento.classList.contains("blocco-forma")) return null;
   return elemento;
 }
 

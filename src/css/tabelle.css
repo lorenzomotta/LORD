@@ -118,8 +118,14 @@
 
 .ridimensiona-colonna,
 .ridimensiona-riga {
+  display: none;
   position: absolute;
   z-index: 3;
+}
+
+.blocco-tabella.scelta .ridimensiona-colonna,
+.blocco-tabella.scelta .ridimensiona-riga {
+  display: block;
 }
 
 .ridimensiona-colonna {
@@ -236,12 +242,17 @@ body.cursore-sposta * {
 }
 
 .presa-tabella {
+  display: none;
   position: absolute;
   background: #1f4d3a;
   border: 2px solid #fffdf8;
   border-radius: 3px;
   z-index: 5;
   pointer-events: auto;
+}
+
+.blocco-tabella.scelta .presa-tabella {
+  display: block;
 }
 
 .presa-tabella-angolo {

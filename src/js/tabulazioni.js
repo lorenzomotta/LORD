@@ -10,7 +10,7 @@ export const TIPI_TABULAZIONE = ["sinistra", "centro", "destra", "decimale"];
 export const PIXEL_PER_MM = 96 / 25.4;
 const PASSO_NORMALE = 12.7;
 const BLOCCHI = "p, h1, h2, h3, h4, li, div";
-const SPECIALI = ".blocco-tabella, .blocco-immagine, .interruzione";
+const SPECIALI = ".blocco-tabella, .blocco-immagine, .blocco-forma, .interruzione";
 
 let attesa = 0;
 

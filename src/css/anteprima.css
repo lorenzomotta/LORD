@@ -47,6 +47,7 @@
 
 .corpo-pagina {
   position: absolute;
+  z-index: 1;
   top: var(--margine-sopra, 18mm);
   left: var(--margine-sinistra, 18mm);
   right: var(--margine-destra, 18mm);
@@ -57,6 +58,7 @@
 .intestazione-stampa,
 .pie-pagina {
   position: absolute;
+  z-index: 1;
   left: var(--margine-sinistra, 18mm);
   right: var(--margine-destra, 18mm);
   overflow: hidden;

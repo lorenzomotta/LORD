@@ -9,6 +9,7 @@ import { attendiImmagini, costruisciVista } from "./vista.js";
 import { latiDaClassi } from "./bordi-tabella.js";
 import { stileWordDi, stiliPerWord } from "./stili-documento.js";
 import { zoomPagina } from "./zoom-pagina.js";
+import { formeSulFoglio, pngForma, segnaPagineEditor } from "./forme.js";
 import { leggiTabulazioni } from "./tabulazioni.js";
 import { rientriWord } from "./rientri.js";
 
@@ -141,9 +142,36 @@ function allineamentoNumero(posizione, docx) {
 }
 
 async function blocchiDocx(vista, docx) {
+  segnaPagineEditor(vista);
+  const forme = [];
+  for (const forma of formeSulFoglio()) {
+    const paragrafo = await formaFlottante(forma, docx);
+    if (paragrafo) forme.push({ pagina: forma.pagina, paragrafo });
+  }
   const acc = [];
   const stato = { elenco: 0 };
-  for (const nodo of vista.children) await aggiungi(nodo, acc, stato, docx);
+  let paginaVista = null;
+  const usate = new Set();
+  const mettiPagina = (pagina) => {
+    forme.forEach((forma, indice) => {
+      if (usate.has(indice) || forma.pagina !== pagina) return;
+      acc.push(forma.paragrafo);
+      usate.add(indice);
+    });
+  };
+  for (const nodo of vista.children) {
+    if (nodo.dataset.paginaEditor != null) {
+      const pagina = Number(nodo.dataset.paginaEditor);
+      if (pagina !== paginaVista) {
+        paginaVista = pagina;
+        mettiPagina(pagina);
+      }
+    }
+    await aggiungi(nodo, acc, stato, docx);
+  }
+  forme.forEach((forma, indice) => {
+    if (!usate.has(indice)) acc.push(forma.paragrafo);
+  });
   if (!acc.length) acc.push(new docx.Paragraph({ children: [new docx.TextRun("")] }));
   return acc;
 }
@@ -300,6 +328,45 @@ function tabellaDocx(figura, docx) {
     );
   }
   return blocchi;
+}
+
+async function formaFlottante(forma, docx) {
+  try {
+    const dati = await pngForma(forma.figura);
+    let larghezza = Math.round(parseFloat(forma.figura.dataset.larghezza) || 180);
+    let altezza = Math.round(parseFloat(forma.figura.dataset.altezza) || 100);
+    const scala = Math.min(1, 620 / larghezza, 780 / altezza);
+    larghezza = Math.max(20, Math.round(larghezza * scala));
+    altezza = Math.max(16, Math.round(altezza * scala));
+    const angolo = Math.round(Number(forma.figura.dataset.angolo) || 0);
+    return new docx.Paragraph({
+      spacing: { before: 0, after: 0 },
+      children: [
+        new docx.ImageRun({
+          type: "png",
+          data: dati,
+          transformation: { width: larghezza, height: altezza, rotation: angolo || undefined },
+          floating: {
+            horizontalPosition: {
+              relative: docx.HorizontalPositionRelativeFrom.PAGE,
+              offset: Math.round(forma.x * 9525),
+            },
+            verticalPosition: {
+              relative: docx.VerticalPositionRelativeFrom.PAGE,
+              offset: Math.round(forma.y * 9525),
+            },
+            allowOverlap: true,
+            behindDocument: Boolean(forma.dietro),
+            wrap: { type: docx.TextWrappingType.NONE },
+            zIndex: forma.piano,
+          },
+        }),
+      ],
+    });
+  } catch (errore) {
+    console.error(errore);
+    return null;
+  }
 }
 
 async function immagineDocx(figura, docx) {

@@ -52,12 +52,13 @@ function visita(nodo, destinazione) {
     destinazione.append(immaginePulita(nodo));
     return;
   }
+  if (nodo.classList.contains("blocco-forma")) return;
   if (nodo.tagName === "UL" || nodo.tagName === "OL") {
     destinazione.append(elencoPulito(nodo));
     return;
   }
 
-  const haBlocchi = nodo.querySelector("p, div, h1, h2, h3, ul, ol, table, figure, .interruzione, .blocco-tabella, .blocco-immagine");
+  const haBlocchi = nodo.querySelector("p, div, h1, h2, h3, ul, ol, table, figure, .interruzione, .blocco-tabella, .blocco-immagine, .blocco-forma");
   if (haBlocchi) {
     nodo.childNodes.forEach((figlio) => visita(figlio, destinazione));
     return;

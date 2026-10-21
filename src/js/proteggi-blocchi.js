@@ -1,4 +1,4 @@
-// Tabelle e immagini non si cancellano per sbaglio con Canc o Backspace:
+// Tabelle, immagini e forme non si cancellano per sbaglio con Canc o Backspace:
 // prima di toglierle il programma chiede conferma.
 
 import { foglio } from "./editor.js";
@@ -6,7 +6,7 @@ import { conferma } from "./finestre.js";
 import { segnaModifica } from "./modifiche.js";
 import { eliminaTabella, rimuoviTabella, ricalcolaTutte } from "./tabelle.js";
 
-const PROTETTI = ".blocco-tabella, .blocco-immagine";
+const PROTETTI = ".blocco-tabella, .blocco-immagine, .blocco-forma";
 
 export function avviaProteggiBlocchi() {
   // In fase di cattura, così questo controllo arriva prima degli altri tasti del foglio.
@@ -85,7 +85,8 @@ async function chiediEdElimina(blocco) {
     await eliminaTabella(blocco);
     return;
   }
-  if (await conferma("Eliminare l'immagine?")) {
+  const domanda = blocco.classList.contains("blocco-forma") ? "Eliminare la forma?" : "Eliminare l'immagine?";
+  if (await conferma(domanda)) {
     blocco.remove();
     segnaModifica();
   }
@@ -115,10 +116,12 @@ export function blocchiNellaSelezione() {
 // Chiede conferma, poi cancella la selezione con dentro tabelle e immagini. Vero se l'utente ha detto sì.
 export async function confermaSelezione(range, coinvolti, testo = null) {
   const tabelle = coinvolti.filter((blocco) => blocco.classList.contains("blocco-tabella"));
-  const immagini = coinvolti.length - tabelle.length;
+  const forme = coinvolti.filter((blocco) => blocco.classList.contains("blocco-forma"));
+  const immagini = coinvolti.length - tabelle.length - forme.length;
   const parti = [];
   if (tabelle.length) parti.push(tabelle.length === 1 ? `la tabella ${tabelle[0].dataset.id}` : `${tabelle.length} tabelle`);
   if (immagini) parti.push(immagini === 1 ? "un'immagine" : `${immagini} immagini`);
+  if (forme.length) parti.push(forme.length === 1 ? "una forma" : `${forme.length} forme`);
   const si = await conferma(`La selezione contiene ${parti.join(" e ")}. Eliminare anche ${coinvolti.length === 1 ? "quella" : "quelle"}?`);
   if (!si) return false;
 

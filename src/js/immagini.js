@@ -52,6 +52,8 @@ export function avviaImmagini() {
   });
 
   foglio.addEventListener("mousedown", (evento) => {
+    const figuraCliccata = evento.target.closest(".blocco-immagine");
+    if (figuraCliccata && foglio.contains(figuraCliccata)) scegliImmagine(figuraCliccata);
     const maniglia = evento.target.closest("[data-ridimensiona]");
     if (maniglia) {
       iniziaRidimensiona(evento, maniglia.closest(".cornice-immagine"), maniglia.dataset.ridimensiona);
@@ -71,9 +73,12 @@ export function avviaImmagini() {
   document.addEventListener("mousedown", (evento) => {
     if (evento.target.closest(".immagine-comandi")) return;
     chiudiBarre();
+    if (!evento.target.closest(".blocco-immagine")) togliSceltaImmagini();
   });
   document.addEventListener("keydown", (evento) => {
-    if (evento.key === "Escape") chiudiBarre();
+    if (evento.key !== "Escape") return;
+    chiudiBarre();
+    togliSceltaImmagini();
   });
 
   foglio.addEventListener("change", (evento) => {
@@ -168,6 +173,7 @@ function inserisciImmagine(dataUrl) {
   figura.dataset.allinea = "sinistra";
   figura.append(cornice);
   inserisciBlocco(figura);
+  scegliImmagine(figura);
 }
 
 export function preparaImmagini(radice = foglio) {
@@ -214,6 +220,17 @@ export function preparaImmagini(radice = foglio) {
     if (!figura.dataset.allinea) figura.dataset.allinea = "sinistra";
     applicaPosizione(figura);
   });
+}
+
+function scegliImmagine(figura) {
+  document.querySelectorAll(".blocco-immagine.scelta").forEach((altra) => {
+    if (altra !== figura) altra.classList.remove("scelta");
+  });
+  figura.classList.add("scelta");
+}
+
+function togliSceltaImmagini() {
+  document.querySelectorAll(".blocco-immagine.scelta").forEach((figura) => figura.classList.remove("scelta"));
 }
 
 function mostraBarra(figura) {

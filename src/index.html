@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="./css/barra-formula.css" />
     <link rel="stylesheet" href="./css/collegamenti.css" />
     <link rel="stylesheet" href="./css/commenti.css" />
+    <link rel="stylesheet" href="./css/forme.css" />
   </head>
   <body>
     <div class="app">
@@ -183,6 +184,9 @@
           <button id="btn-immagine" class="icona" type="button" title="Immagine" aria-label="Immagine">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="9" cy="9" r="2" /><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21" /></svg>
           </button>
+          <button id="btn-forme" class="icona" type="button" title="Forme: linea, freccia, rettangolo, cerchio, poligono" aria-label="Forme" aria-expanded="false" aria-controls="pannello-forme">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="10" height="10" rx="1" /><circle cx="16" cy="9" r="4.5" /></svg>
+          </button>
           <button id="btn-riferimento" class="icona" type="button" title="Collega cella: mostra nel testo il valore di una cella" aria-label="Collega cella">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg>
           </button>
@@ -247,13 +251,14 @@
           <li>Il pulsante <strong>Stili…</strong> cambia l’aspetto di Paragrafo, Titolo, Titolo 2 e Titolo 3 in tutto il documento: carattere, dimensione, colore, allineamento, interlinea e spazi. Con <strong>Nuovo stile…</strong> ne crei di tuoi (per esempio “Nota” o “Citazione”), che poi trovi nella tendina Paragrafo. Gli stili si salvano con la relazione e in Word diventano stili veri.</li>
           <li>Il tasto destro sul quadrato in alto a sinistra della tabella, dove si incontrano lettere e numeri, apre codice, titolo, bordi, posizione nel foglio, riga totali ed elimina.</li>
           <li><strong>Riga totali</strong> chiede quali colonne sommare e resta sempre in fondo.</li>
-          <li>Clicca la lettera (A, B, C…) o il numero di riga per scegliere tutta la colonna o la riga: da lì imposti i millimetri, la nascondi o cambi il carattere e lo sfondo. Trascina la lettera o il numero per spostarla. Trascina il bordino per stringere. Il bordo destro della tabella cambia la larghezza, quello in basso l’altezza. Il quadratino in basso a destra rimpicciolisce o ingrandisce tutta la tabella insieme, lettere comprese.</li>
+          <li>Clicca la lettera (A, B, C…) o il numero di riga per scegliere tutta la colonna o la riga: da lì imposti i millimetri, la nascondi o cambi il carattere e lo sfondo. Trascina la lettera o il numero per spostarla. Un clic sulla tabella mostra i quadratini: il bordino stringe una colonna o una riga, il bordo destro cambia la larghezza, quello in basso l’altezza, il quadratino in basso a destra rimpicciolisce o ingrandisce tutta la tabella insieme, lettere comprese.</li>
           <li>Tasto destro su una cella: <strong>+ Riga</strong> sotto, <strong>− Riga</strong> toglie quella riga, <strong>+ Colonna</strong> a destra, <strong>− Colonna</strong> toglie quella colonna. Poi tipo (anche <strong>Euro</strong>), bordi, grassetto, corsivo, sottolineato, barrato, allineamento, colori, carattere e <strong>Applica alla colonna</strong>.</li>
           <li>Trascina il mouse sulle celle per selezionarle insieme e formattarle tutte. <strong>Unisci</strong> le fa diventare una sola (resta il testo di quella in alto a sinistra). <strong>Separa</strong> le divide di nuovo.</li>
           <li>Il <strong>quadratino</strong> in basso a destra della selezione riempie le celle vicine: trascinalo in giù o di lato. Le formule si adattano (=A1 diventa =A2) e due numeri in fila continuano la serie (1, 2 → 3, 4…). Trascinando il <strong>bordo</strong> della selezione sposti il contenuto altrove. Esc annulla.</li>
           <li>I decimali usano la virgola: <code>1,5</code>. Per unire più parti usa il punto e virgola: <code>=SOMMA(A1:A3;10)</code>.</li>
           <li>Ogni tabella ha un codice unico, per esempio <code>Tabella1</code>. Nel testo scrivi <code>=Tabella1.C2</code> e poi uno spazio: il valore resta collegato. Più comodo: clicca nel testo, premi <strong>Collega cella</strong> e poi clicca la cella nella tabella.</li>
-          <li>Le immagini si inseriscono col pulsante oppure con <strong>Ctrl+V</strong>. Trascina i bordi per cambiare larghezza o altezza, e la foto per spostarla. Il tasto destro apre la barra: misure, posizione, davanti e dietro.</li>
+          <li>Le immagini si inseriscono col pulsante oppure con <strong>Ctrl+V</strong>. Un clic sulla foto mostra i quadratini: trascinali per cambiare larghezza o altezza. La foto si sposta trascinandola. Il tasto destro apre la barra: misure, posizione, davanti e dietro.</li>
+          <li>Il pulsante <strong>Forme</strong> inserisce una linea, una freccia, un rettangolo, un rettangolo con gli angoli tondi, un cerchio, un’ellisse o un poligono. Il poligono parte con 5 lati: nella barra, <strong>Lati</strong> dice quanti ne vuoi, da 3 a 24. Un clic mostra un pallino su ogni vertice e puoi trascinarlo dove vuoi. Se cambi il numero di lati, torna una forma regolare. La forma sta sopra al testo, alle tabelle e ai margini: trascinala in qualsiasi punto del foglio. Il tasto destro sulla forma apre la barra: bordo, sfondo, spessore, linea, gradi, ordine ed elimina. In <strong>Linea</strong> scegli continua, trattini o punti: stretti, medi e larghi cambiano lo spazio. Nel menu <strong>Ordine</strong> trovi <strong>Porta sopra</strong>, <strong>Porta sotto</strong>, <strong>Sopra a tutto</strong> e <strong>Sotto a tutto</strong>. <strong>Sotto a tutto</strong> mette la forma dietro al testo: il colore resta pieno e il testo, la tabella o la foto ci stanno sopra, come un buco nel colore, anche senza trasparenza. Per riprenderla clicca il colore, anche dove c’è scritto sopra: si seleziona e la puoi spostare. La tabella e la foto restano cliccabili. Su rettangolo, angoli tondi, cerchio ed ellisse la levetta <strong>Trasparenza</strong> lascia il colore, ma fa vedere il testo sotto: più la sposti a destra, più si vede. Un clic mostra i quadratini: a destra e a sinistra allungano la forma e l’altro lato resta fermo, in basso cambia l’altezza, l’angolo ingrandisce tutto. I tre pallini ruotano. Quello sopra gira la forma sul posto. Quello alla fine gira la forma e l’inizio resta fermo; quello all’inizio gira e la fine resta ferma. Con Maiusc i gradi vanno di 15 in 15, oppure scrivi i gradi nella barra (90 è un quarto di giro). Con Maiusc i gradi vanno di 15 in 15. <strong>Elimina</strong> la toglie.</li>
           <li>Le prime icone della barra sono <strong>Taglia</strong>, <strong>Copia</strong>, <strong>Incolla</strong> e <strong>Copia formato</strong> (il pennello): metti il cursore sul testo che ti piace, premi il pennello e seleziona il testo da cambiare. Doppio clic sul pennello per usarlo più volte, <strong>Esc</strong> per finire.</li>
           <li><strong>Righello e tabulazioni</strong>: il tasto <strong>Tab</strong> salta al prossimo punto del righello. Scegli il tipo col quadratino a sinistra del righello (a sinistra, al centro, a destra, decimale), poi clicca sul righello per mettere la tabulazione nel paragrafo dove sta il cursore. Trascinala per spostarla, trascinala fuori dal righello per toglierla. I <strong>rientri</strong> si trascinano: triangolo in alto per la prima riga, triangolo in basso per l’inizio delle altre righe, quadratino per spostare tutto il paragrafo, triangolo a destra per la fine del paragrafo. A sinistra della pagina c’è il <strong>righello verticale</strong>: lo zero è il margine alto e i numeri sono i centimetri. Trascina la <strong>lineetta verde</strong> sul confine tra grigio e bianco: in alto cambi i margini sinistro e destro, a sinistra i margini alto e basso. Esc annulla.</li>
           <li><strong>Salva</strong> tiene il lavoro modificabile. <strong>Esporta DOCX</strong> crea il file Word.</li>
@@ -271,11 +276,13 @@
         <div class="zoom-contenitore" id="zoom-contenitore">
         <div class="cornice-foglio" id="cornice-foglio">
           <div class="carte-pagina" id="carte-pagina" aria-hidden="true"></div>
+          <div id="strato-dietro" class="strato-dietro" aria-hidden="true"></div>
           <div id="intestazione-foglio" class="fascia-foglio fascia-intestazione vuota" contenteditable="true" spellcheck="true" data-vuoto="Intestazione" aria-label="Intestazione"></div>
           <div id="pie-foglio" class="fascia-foglio fascia-pie vuota" contenteditable="true" spellcheck="true" data-vuoto="Piè di pagina" aria-label="Piè di pagina"></div>
         <article id="foglio" class="foglio testo-relazione" contenteditable="true" spellcheck="true" aria-label="Foglio della relazione">
           <p><br></p>
         </article>
+        <div id="strato-forme" class="strato-forme" aria-hidden="true"></div>
         </div>
         </div>
       </main>
@@ -660,6 +667,16 @@
         <button id="stili-ripristina" type="button" title="Rimette questo stile come all'inizio">Ripristina questo stile</button>
         <button id="stili-chiudi" type="button">Chiudi</button>
       </div>
+    </div>
+
+    <div id="pannello-forme" class="pannello-forme" hidden>
+      <button type="button" data-forma="linea"><svg viewBox="0 0 24 16" aria-hidden="true"><path d="M2 8h20" /></svg>Linea</button>
+      <button type="button" data-forma="freccia"><svg viewBox="0 0 24 16" aria-hidden="true"><path d="M2 8h16M14 4l6 4-6 4" /></svg>Freccia</button>
+      <button type="button" data-forma="rettangolo"><svg viewBox="0 0 24 16" aria-hidden="true"><rect class="pieno" x="2" y="2" width="20" height="12" /></svg>Rettangolo</button>
+      <button type="button" data-forma="arrotondato"><svg viewBox="0 0 24 16" aria-hidden="true"><rect class="pieno" x="2" y="2" width="20" height="12" rx="4" /></svg>Angoli tondi</button>
+      <button type="button" data-forma="cerchio"><svg viewBox="0 0 24 16" aria-hidden="true"><circle class="pieno" cx="12" cy="8" r="6" /></svg>Cerchio</button>
+      <button type="button" data-forma="ellisse"><svg viewBox="0 0 24 16" aria-hidden="true"><ellipse class="pieno" cx="12" cy="8" rx="10" ry="6" /></svg>Ellisse</button>
+      <button type="button" data-forma="poligono"><svg viewBox="0 0 24 16" aria-hidden="true"><polygon class="pieno" points="12,1 22,6 18,15 6,15 2,6" /></svg>Poligono</button>
     </div>
 
     <div id="anteprima" class="anteprima nascosta"></div>

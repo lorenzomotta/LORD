@@ -42,7 +42,7 @@ function provaCollegamento(accettaSenzaSpazio) {
   if (!selezione || !selezione.isCollapsed || !selezione.rangeCount) return;
   const nodo = selezione.anchorNode;
   if (!nodo || nodo.nodeType !== Node.TEXT_NODE) return;
-  if (nodo.parentElement?.closest(".blocco-tabella, .blocco-immagine, .riferimento")) return;
+  if (nodo.parentElement?.closest(".blocco-tabella, .blocco-immagine, .blocco-forma, .riferimento")) return;
 
   const fino = nodo.textContent.slice(0, selezione.anchorOffset);
   const modello = accettaSenzaSpazio

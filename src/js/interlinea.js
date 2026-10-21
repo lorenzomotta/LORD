@@ -4,7 +4,7 @@ import { foglio } from "./editor.js";
 
 const FASCE = "#intestazione-foglio, #pie-foglio";
 const SCELTE = [1, 1.15, 1.5, 2];
-const NON_TESTO = ["taglio-pagina", "blocco-tabella", "blocco-immagine", "interruzione"];
+const NON_TESTO = ["taglio-pagina", "blocco-tabella", "blocco-immagine", "blocco-forma", "interruzione"];
 
 export function avviaInterlinea() {
   document.addEventListener("selectionchange", () => {
@@ -42,7 +42,7 @@ export function interlineaCorrente() {
 // altrimenti quelle avrebbero la precedenza e il paragrafo resterebbe a metà.
 function impostaSu(blocco, valore) {
   blocco.querySelectorAll("[style]").forEach((interno) => {
-    if (interno.closest("td, .blocco-tabella, .blocco-immagine")) return;
+    if (interno.closest("td, .blocco-tabella, .blocco-immagine, .blocco-forma")) return;
     interno.style.removeProperty("line-height");
   });
   blocco.style.lineHeight = valore;

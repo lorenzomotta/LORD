@@ -21,6 +21,8 @@ export function avviaTabelle() {
   document.getElementById("btn-tabella").addEventListener("click", () => chiediTabella(cursore));
 
   foglio.addEventListener("mousedown", (evento) => {
+    const tabellaCliccata = evento.target.closest(".blocco-tabella");
+    if (tabellaCliccata && foglio.contains(tabellaCliccata)) scegliTabella(tabellaCliccata);
     const presaTabella = evento.target.closest("[data-ridimensiona-tabella]");
     if (presaTabella && foglio.contains(presaTabella)) {
       iniziaRidimensionaTabella(evento, presaTabella);
@@ -130,9 +132,12 @@ export function avviaTabelle() {
   document.addEventListener("mousedown", (evento) => {
     if (evento.target.closest(".tabella-comandi")) return;
     chiudiBarreTabella();
+    if (!evento.target.closest(".blocco-tabella")) togliSceltaTabelle();
   });
   document.addEventListener("keydown", (evento) => {
-    if (evento.key === "Escape") chiudiBarreTabella();
+    if (evento.key !== "Escape") return;
+    chiudiBarreTabella();
+    togliSceltaTabelle();
   });
 
   totale.addEventListener("mousedown", (evento) => evento.preventDefault());
@@ -365,7 +370,9 @@ async function chiediTabella(cursore) {
   });
   if (!dati) return;
   ripristinaCursore(cursore);
-  inserisciBlocco(creaTabella(dati.codice.trim(), dati.titolo.trim(), Number(dati.righe), Number(dati.colonne)));
+  const tabellaNuova = creaTabella(dati.codice.trim(), dati.titolo.trim(), Number(dati.righe), Number(dati.colonne));
+  inserisciBlocco(tabellaNuova);
+  scegliTabella(tabellaNuova);
   ricalcolaTutte();
   segnaModifica();
 }
@@ -1156,6 +1163,17 @@ function assicuraBarraTabella(figura) {
     const nodo = comandi.querySelector(selettore);
     if (nodo) comandi.append(nodo);
   });
+}
+
+function scegliTabella(figura) {
+  document.querySelectorAll(".blocco-tabella.scelta").forEach((altra) => {
+    if (altra !== figura) altra.classList.remove("scelta");
+  });
+  figura.classList.add("scelta");
+}
+
+function togliSceltaTabelle() {
+  document.querySelectorAll(".blocco-tabella.scelta").forEach((figura) => figura.classList.remove("scelta"));
 }
 
 function mostraBarraTabella(figura, angolo) {

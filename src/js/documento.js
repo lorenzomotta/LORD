@@ -6,6 +6,7 @@ import { avvisa, conferma } from "./finestre.js";
 import { messaggio, segnaModifica } from "./modifiche.js";
 import { htmlIntestazione, htmlPie, impostaFasce } from "./fasce-foglio.js";
 import { preparaImmagini } from "./immagini.js";
+import { preparaForme } from "./forme.js";
 import { ricalcolaTutte } from "./tabelle.js";
 import { impostaStili, leggiStili } from "./stili-documento.js";
 import { aggiornaPosizioneNumero } from "./numeri-pagina.js";
@@ -223,7 +224,13 @@ export function nomeFile() {
 
 function htmlSenzaStacchi() {
   const copia = foglio.cloneNode(true);
+  document.querySelectorAll("#strato-forme .blocco-forma").forEach((forma) => {
+    const clone = forma.cloneNode(true);
+    clone.classList.remove("scelta", "barra-aperta", "barra-sotto", "trascinata");
+    copia.append(clone);
+  });
   copia.querySelectorAll(".taglio-pagina").forEach((nodo) => nodo.remove());
+  copia.querySelectorAll(".blocco-immagine.scelta, .blocco-tabella.scelta").forEach((nodo) => nodo.classList.remove("scelta"));
   copia.querySelectorAll("td.selezionata, td.cella-ancora, td.angolo-selezione, td.anteprima-riempi, td.anteprima-sposta").forEach((td) => {
     td.classList.remove("selezionata", "cella-ancora", "angolo-selezione", "anteprima-riempi", "anteprima-sposta");
   });
@@ -232,10 +239,10 @@ function htmlSenzaStacchi() {
 }
 
 function serializza() {
-  document.querySelectorAll("#foglio select").forEach((select) => {
+  document.querySelectorAll("#foglio select, #strato-forme select").forEach((select) => {
     [...select.options].forEach((opzione) => opzione.toggleAttribute("selected", opzione.value === select.value));
   });
-  document.querySelectorAll("#foglio input").forEach((input) => {
+  document.querySelectorAll("#foglio input, #strato-forme input").forEach((input) => {
     if (input.classList.contains("campo-id")) {
       input.setAttribute("value", input.closest(".blocco-tabella").dataset.id || input.value);
     } else {
@@ -289,6 +296,7 @@ async function nuova() {
   impostaStili(null);
   applicaFormatoVisivo();
   ricalcolaTutte();
+  preparaForme();
   salvaBozza();
   messaggio("Foglio vuoto.");
 }
@@ -338,4 +346,5 @@ function applica(dati) {
   applicaFormatoVisivo();
   ricalcolaTutte();
   preparaImmagini();
+  preparaForme();
 }

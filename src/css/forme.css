@@ -1,0 +1,364 @@
+/* Menu delle forme e la forma sul foglio. */
+
+.pannello-forme[hidden] {
+  display: none;
+}
+
+.pannello-forme {
+  position: fixed;
+  z-index: 40;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  width: 196px;
+  padding: 6px;
+  background: #fffdf8;
+  border: 1px solid #d5cec0;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(40, 32, 18, 0.18);
+}
+
+.pannello-forme button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 6px;
+  padding: 6px;
+  color: #1c1915;
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.pannello-forme button:hover {
+  background: #efe8da;
+  border-color: #d5cec0;
+}
+
+.pannello-forme svg {
+  width: 22px;
+  height: 16px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.pannello-forme svg .pieno {
+  fill: #e7f2ec;
+}
+
+.strato-forme,
+.strato-dietro {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.strato-forme {
+  z-index: 5;
+}
+
+.strato-dietro {
+  z-index: 0;
+}
+
+.eco-forma {
+  position: absolute;
+  pointer-events: none;
+}
+
+.eco-forma svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.blocco-forma.dietro:not(.scelta),
+.blocco-forma.dietro:not(.scelta) * {
+  pointer-events: none;
+}
+
+.blocco-forma.dietro.scelta,
+.blocco-forma.dietro.scelta * {
+  pointer-events: auto;
+}
+
+.blocco-forma.dietro .cornice-forma svg {
+  opacity: 0;
+}
+
+.blocco-forma {
+  position: absolute;
+  margin: 0;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+.cornice-forma {
+  position: relative;
+  cursor: grab;
+}
+
+.blocco-forma.trascinata .cornice-forma {
+  cursor: grabbing;
+}
+
+.cornice-forma svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.blocco-forma:hover .cornice-forma,
+.blocco-forma.scelta .cornice-forma {
+  outline: 1px dashed #1f4d3a;
+  outline-offset: 3px;
+}
+
+.blocco-forma.scelta .cornice-forma {
+  outline-style: solid;
+}
+
+.forma-comandi {
+  display: none;
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 6px);
+  z-index: 6;
+  width: max-content;
+  max-width: 560px;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  margin: 0;
+  padding: 2px 4px;
+  background: #fffdf8;
+  border: 1px solid #d5cec0;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(40, 32, 18, 0.16);
+  font-size: 11px;
+  line-height: 1;
+  color: #4d463c;
+}
+
+.blocco-forma.barra-aperta .forma-comandi {
+  display: flex;
+}
+
+.blocco-forma.barra-sotto .forma-comandi {
+  bottom: auto;
+  top: calc(100% + 6px);
+}
+
+.forma-comandi button,
+.forma-comandi select {
+  border: 1px solid #d5cec0;
+  border-radius: 3px;
+  background: white;
+  padding: 1px 4px;
+  font-size: 11px;
+  color: #1c1915;
+}
+
+.forma-comandi label {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.forma-comandi input[type="color"] {
+  width: 18px;
+  height: 14px;
+  padding: 0;
+  border: 1px solid #d5cec0;
+  background: white;
+  cursor: pointer;
+}
+
+.forma-comandi .campo-angolo {
+  width: 40px;
+  border: 1px solid #d5cec0;
+  border-radius: 3px;
+  background: white;
+  padding: 1px 2px;
+  font-size: 11px;
+  color: #1c1915;
+}
+
+.campo-trasparenza {
+  width: 46px;
+  height: 12px;
+  margin: 0;
+  padding: 0;
+  accent-color: #1f4d3a;
+  cursor: pointer;
+}
+
+.scelta-sfondo {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.scelta-sfondo[hidden],
+.scelta-lati[hidden] {
+  display: none;
+}
+
+.forma-comandi .campo-lati {
+  width: 40px;
+  border: 1px solid #d5cec0;
+  border-radius: 3px;
+  background: white;
+  padding: 1px 2px;
+  font-size: 11px;
+  color: #1c1915;
+}
+
+.presa-forma,
+.presa-ruota {
+  display: none;
+}
+
+.blocco-forma.scelta .presa-forma,
+.blocco-forma.scelta .presa-ruota,
+.blocco-forma.scelta .nodo-forma {
+  display: block;
+}
+
+.nodo-forma {
+  display: none;
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  margin-top: -6px;
+  border-radius: 50%;
+  background: #fffdf8;
+  border: 2px solid #1f4d3a;
+  z-index: 4;
+  cursor: grab;
+}
+
+.blocco-forma.trascinata .nodo-forma {
+  cursor: grabbing;
+}
+
+.presa-forma {
+  position: absolute;
+  background: #1f4d3a;
+  border: 2px solid #fffdf8;
+  border-radius: 3px;
+  z-index: 3;
+}
+
+.presa-forma-entrambi {
+  right: -7px;
+  bottom: -7px;
+  width: 14px;
+  height: 14px;
+  cursor: nwse-resize;
+}
+
+.presa-forma-larghezza,
+.presa-forma-larghezza-inizio {
+  top: 50%;
+  width: 10px;
+  height: 22px;
+  transform: translateY(-50%);
+  cursor: ew-resize;
+}
+
+.presa-forma-larghezza {
+  right: -6px;
+}
+
+.presa-forma-larghezza-inizio {
+  left: -6px;
+}
+
+.presa-forma-altezza {
+  left: 50%;
+  bottom: -6px;
+  width: 22px;
+  height: 10px;
+  transform: translateX(-50%);
+  cursor: ns-resize;
+}
+
+.presa-ruota {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fffdf8;
+  border: 2px solid #1f4d3a;
+  cursor: grab;
+  z-index: 4;
+}
+
+.presa-ruota::before {
+  content: "";
+  position: absolute;
+  background: #1f4d3a;
+}
+
+.presa-ruota-alto {
+  left: 50%;
+  top: -28px;
+  margin-left: -8px;
+}
+
+.presa-ruota-alto::before {
+  left: 50%;
+  top: 14px;
+  width: 1px;
+  height: 14px;
+}
+
+.presa-ruota-inizio {
+  left: -28px;
+  top: 50%;
+  margin-top: -8px;
+}
+
+.presa-ruota-inizio::before {
+  left: 16px;
+  top: 7px;
+  width: 12px;
+  height: 1px;
+}
+
+.presa-ruota-fine {
+  right: -32px;
+  top: 50%;
+  margin-top: -8px;
+}
+
+.presa-ruota-fine::before {
+  left: -6px;
+  top: 7px;
+  width: 6px;
+  height: 1px;
+}
+
+.blocco-forma.trascinata .presa-ruota {
+  cursor: grabbing;
+}
+
+.pagina > .forma-stampa {
+  position: absolute;
+  margin: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.blocco-forma.evidenziato {
+  outline: 2px solid #f0c36a;
+}

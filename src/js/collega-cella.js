@@ -47,7 +47,7 @@ function cursoreNelTesto(cursore) {
   const nodo = cursore.startContainer;
   const elemento = nodo.nodeType === Node.ELEMENT_NODE ? nodo : nodo.parentElement;
   if (!elemento || !foglio.contains(elemento)) return false;
-  return !elemento.closest(".blocco-tabella, .blocco-immagine, .riferimento");
+  return !elemento.closest(".blocco-tabella, .blocco-immagine, .blocco-forma, .riferimento");
 }
 
 function sceltaConMouse(evento) {

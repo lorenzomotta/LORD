@@ -4,6 +4,7 @@ import { foglio } from "./editor.js";
 import { esportaDocx } from "./esporta-docx.js";
 import { opzioniPagina } from "./documento.js";
 import { attendiImmagini, costruisciVista } from "./vista.js";
+import { piazzaFormeInAnteprima } from "./forme.js";
 import { avviaZoomAnteprima } from "./zoom-anteprima.js";
 
 export function avviaAnteprima() {
@@ -55,6 +56,7 @@ export async function apriAnteprima() {
   pagine.forEach((corpo, indice) => {
     pila.append(creaPagina(corpo, indice, pagine.length, opzioni));
   });
+  piazzaFormeInAnteprima(pila);
   barra.querySelector(".conto-pagine").textContent = pagine.length === 1 ? "1 pagina" : `${pagine.length} pagine`;
 }
 

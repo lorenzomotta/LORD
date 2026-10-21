@@ -6,7 +6,7 @@ import { avvisa, chiedi } from "./finestre.js";
 import { messaggio, segnaModifica } from "./modifiche.js";
 
 const ZONE = "#foglio, #intestazione-foglio, #pie-foglio";
-const ESCLUSI = "td[data-cella], .blocco-immagine, .blocco-tabella, input, textarea, select";
+const ESCLUSI = "td[data-cella], .blocco-immagine, .blocco-forma, .blocco-tabella, input, textarea, select";
 const BLOCCHI = "p, h1, h2, h3, h4, li, div";
 
 export function avviaCommenti() {

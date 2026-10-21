@@ -115,11 +115,18 @@
 .ridimensiona-immagine,
 .ridimensiona-larghezza,
 .ridimensiona-altezza {
+  display: none;
   position: absolute;
   background: #1f4d3a;
   border: 2px solid #fffdf8;
   border-radius: 3px;
   z-index: 3;
+}
+
+.blocco-immagine.scelta .ridimensiona-immagine,
+.blocco-immagine.scelta .ridimensiona-larghezza,
+.blocco-immagine.scelta .ridimensiona-altezza {
+  display: block;
 }
 
 .ridimensiona-immagine {

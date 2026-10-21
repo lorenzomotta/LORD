@@ -201,6 +201,7 @@ function sistemaVicino(evento, blocco, verso) {
     vicinoBlocco &&
     (vicinoBlocco.classList.contains("blocco-tabella") ||
       vicinoBlocco.classList.contains("blocco-immagine") ||
+      vicinoBlocco.classList.contains("blocco-forma") ||
       vicinoBlocco.classList.contains("interruzione"));
   if (speciale) {
     evento.preventDefault();

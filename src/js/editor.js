@@ -71,7 +71,7 @@ export function inserisciBlocco(nodo) {
   const range = selezione.getRangeAt(0);
   if (!range.collapsed) range.deleteContents();
 
-  const speciale = elementoDi(selezione.anchorNode)?.closest(".blocco-tabella, .blocco-immagine, .interruzione");
+  const speciale = elementoDi(selezione.anchorNode)?.closest(".blocco-tabella, .blocco-immagine, .blocco-forma, .interruzione");
   if (speciale && foglio.contains(speciale)) {
     const vuoto = paragrafoVuoto();
     speciale.after(nodo);

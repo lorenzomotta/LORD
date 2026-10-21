@@ -40,7 +40,7 @@ export function avviaMenuPagina() {
 function clicSulBordoPagina(evento) {
   if (clicSuTesto(evento)) return false;
   const origine = evento.target.nodeType === 1 ? evento.target : evento.target.parentElement;
-  if (!origine || origine.closest("td[data-cella], .blocco-immagine, .blocco-tabella, input, textarea, select, button, #menu-testo")) return false;
+  if (!origine || origine.closest("td[data-cella], .blocco-immagine, .blocco-forma, .blocco-tabella, input, textarea, select, button, #menu-testo")) return false;
   if (!origine.closest("#foglio, #intestazione-foglio, #pie-foglio")) return false;
 
   const x = evento.clientX;
