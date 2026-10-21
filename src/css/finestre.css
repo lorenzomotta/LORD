@@ -62,6 +62,8 @@
   min-height: 72px;
   font: inherit;
 }
+
+.errore-finestra {
   min-height: 1.2em;
   color: #8f1d1d;
   font-size: 13px;
