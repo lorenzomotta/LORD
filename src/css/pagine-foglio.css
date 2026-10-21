@@ -1,0 +1,85 @@
+:root {
+  --stacco-pagina: 40px;
+}
+
+.cornice-foglio {
+  position: relative;
+  width: min(var(--pagina-larghezza, 210mm), 100%);
+  margin: 0 auto;
+}
+
+.carte-pagina {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.carta-pagina {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: #fffdf8;
+  box-shadow: 0 10px 30px rgba(40, 32, 18, 0.12);
+}
+
+.numero-carta {
+  position: absolute;
+  left: var(--margine-sinistra, 18mm);
+  right: var(--margine-destra, 18mm);
+  bottom: min(8mm, var(--margine-sotto, 22mm));
+  font-family: Calibri, Carlito, "Segoe UI", sans-serif;
+  font-size: 11pt;
+  color: #8a8175;
+}
+
+.cornice-foglio .foglio {
+  width: 100%;
+  background: transparent;
+  box-shadow: none;
+  position: relative;
+  z-index: 1;
+}
+
+.taglio-pagina {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin-left: calc(-1 * var(--margine-sinistra, 18mm));
+  margin-right: calc(-1 * var(--margine-destra, 18mm));
+  min-height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  color: #6e675d;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.taglio-vuoto {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.taglio-stacco {
+  flex: none;
+  height: var(--stacco-pagina);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.taglio-stacco::before,
+.taglio-stacco::after {
+  content: "";
+  width: 36px;
+  border-top: 1px solid #b7ad9e;
+}
+
+.taglio-margine {
+  flex: none;
+}

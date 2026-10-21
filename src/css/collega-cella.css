@@ -1,0 +1,39 @@
+.avviso-collega {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 14px;
+  background: #2a6fb0;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 28px rgba(20, 32, 48, 0.3);
+  font-size: 13px;
+}
+
+.avviso-collega[hidden] {
+  display: none;
+}
+
+.avviso-collega button {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: transparent;
+  color: white;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 13px;
+}
+
+body.scegli-cella-collega .blocco-tabella td[data-cella] {
+  cursor: pointer;
+}
+
+body.scegli-cella-collega .blocco-tabella td[data-cella]:hover {
+  outline: 2px dashed #2a6fb0;
+  outline-offset: -2px;
+  background-color: #e3eef9;
+}

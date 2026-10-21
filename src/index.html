@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lord</title>
+    <link rel="stylesheet" href="./css/app.css" />
+    <link rel="stylesheet" href="./css/barra.css" />
+    <link rel="stylesheet" href="./css/icone-barra.css" />
+    <link rel="stylesheet" href="./css/copia-formato.css" />
+    <link rel="stylesheet" href="./css/tavolozza-colori.css" />
+    <link rel="stylesheet" href="./css/numeri-pagina.css" />
+    <link rel="stylesheet" href="./css/foglio.css" />
+    <link rel="stylesheet" href="./css/stili-documento.css" />
+    <link rel="stylesheet" href="./css/pagine-foglio.css" />
+    <link rel="stylesheet" href="./css/fasce-foglio.css" />
+    <link rel="stylesheet" href="./css/tabelle.css" />
+    <link rel="stylesheet" href="./css/bordi-tabella.css" />
+    <link rel="stylesheet" href="./css/menu-cella.css" />
+    <link rel="stylesheet" href="./css/asse-tabella.css" />
+    <link rel="stylesheet" href="./css/calcola-cella.css" />
+    <link rel="stylesheet" href="./css/punta-cella.css" />
+    <link rel="stylesheet" href="./css/trascina-celle.css" />
+    <link rel="stylesheet" href="./css/collega-cella.css" />
+    <link rel="stylesheet" href="./css/zoom-pagina.css" />
+    <link rel="stylesheet" href="./css/menu-pagina.css" />
+    <link rel="stylesheet" href="./css/menu-testo.css" />
+    <link rel="stylesheet" href="./css/anteprima.css" />
+    <link rel="stylesheet" href="./css/finestre.css" />
+    <link rel="stylesheet" href="./css/stampa.css" />
+    <link rel="stylesheet" href="./css/righello.css" />
+    <link rel="stylesheet" href="./css/righello-verticale.css" />
+    <link rel="stylesheet" href="./css/tabulazioni.css" />
+    <link rel="stylesheet" href="./css/barra-formula.css" />
+    <link rel="stylesheet" href="./css/collegamenti.css" />
+    <link rel="stylesheet" href="./css/commenti.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="intestazione">
+        <div class="marca">
+          <span class="logo" aria-hidden="true">L</span>
+          <div>
+            <strong>Lord</strong>
+            <small>Testi, tabelle e immagini</small>
+          </div>
+        </div>
+        <div class="azioni-file">
+          <button id="btn-nuovo" type="button">Nuovo</button>
+          <button id="btn-apri" type="button">Apri</button>
+          <button id="btn-salva" type="button">Salva</button>
+          <button id="btn-anteprima" type="button" class="primario">Anteprima</button>
+          <button id="btn-docx" type="button" class="primario">Esporta DOCX</button>
+        </div>
+      </header>
+
+      <div class="barra" id="barra">
+        <div class="gruppo">
+          <button id="btn-taglia" class="icona" type="button" title="Taglia (Ctrl+X)" aria-label="Taglia">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="3" /><circle cx="6" cy="18" r="3" /><path d="M20 4 8.12 15.88M14.47 14.48 20 20M8.12 8.12 12 12" /></svg>
+          </button>
+          <button id="btn-copia" class="icona" type="button" title="Copia (Ctrl+C)" aria-label="Copia">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="14" height="14" rx="2" /><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" /></svg>
+          </button>
+          <button id="btn-incolla" class="icona" type="button" title="Incolla (Ctrl+V)" aria-label="Incolla">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1" /><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /></svg>
+          </button>
+          <button id="btn-copia-formato" class="icona" type="button" title="Copia formato: un clic per usarlo una volta, doppio clic per usarlo più volte (Esc per finire)" aria-label="Copia formato">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.4 2.6a1 1 0 1 1 3 3l-4 4a.5.5 0 0 0 0 .7l1 1a2.4 2.4 0 0 1 0 3.4l-1 1a.5.5 0 0 1-.7 0L8.4 7.3a.5.5 0 0 1 0-.7l1-1a2.4 2.4 0 0 1 3.4 0l1 1a.5.5 0 0 0 .7 0z" /><path d="M9 8c-1.8 2.7-4 3.5-6.6 4a.5.5 0 0 0-.3.8l7.3 8.9a1 1 0 0 0 1.2.2C12.7 20.4 16 16.8 16 15" /><path d="m14.6 17.9-10.7-2.9" /></svg>
+          </button>
+        </div>
+
+        <div class="gruppo">
+          <button type="button" data-formato="bold" title="Grassetto (Ctrl+B)"><b>G</b></button>
+          <button type="button" data-formato="italic" title="Corsivo (Ctrl+I)"><i>C</i></button>
+          <button type="button" data-formato="underline" title="Sottolineato (Ctrl+U)"><u>S</u></button>
+          <button type="button" data-formato="strikeThrough" title="Barrato"><s>B</s></button>
+          <button id="btn-collegamento" class="icona" type="button" data-collegamento title="Collegamento a un sito o a un'e-mail (Ctrl+K). Ctrl+clic sul collegamento per aprirlo" aria-label="Collegamento">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" /></svg>
+          </button>
+        </div>
+
+        <div class="gruppo">
+          <select id="font" title="Tipo di carattere">
+            <option value="Calibri">Calibri</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Arial">Arial</option>
+            <option value="Segoe UI">Segoe UI</option>
+            <option value="Courier New">Courier New</option>
+          </select>
+          <select id="dimensione" title="Dimensione del carattere">
+            <option>10</option>
+            <option>11</option>
+            <option selected>12</option>
+            <option>14</option>
+            <option>16</option>
+            <option>18</option>
+            <option>20</option>
+            <option>24</option>
+            <option>28</option>
+            <option>36</option>
+          </select>
+        </div>
+
+        <div class="gruppo">
+          <div class="scelta-colore">
+            <button id="btn-colore-testo" class="colore-metti" data-colore-metti="testo" type="button" title="Colore del testo: mette l'ultimo colore scelto" aria-label="Colore del testo">
+              <span class="colore-segno">A</span><span class="colore-barra" data-colore-barra="testo"></span>
+            </button>
+            <button id="apri-colore-testo" class="colore-apri" data-colore-apri="testo" type="button" title="Scegli il colore del testo" aria-label="Scegli il colore del testo">▾</button>
+          </div>
+          <div class="scelta-colore">
+            <button id="btn-colore-sfondo" class="colore-metti" data-colore-metti="sfondo" type="button" title="Evidenziatore: mette l'ultimo colore scelto" aria-label="Evidenziatore">
+              <span class="colore-segno"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 11-6 6v3h9l3-3" /><path d="m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4" /></svg></span><span class="colore-barra" data-colore-barra="sfondo"></span>
+            </button>
+            <button id="apri-colore-sfondo" class="colore-apri" data-colore-apri="sfondo" type="button" title="Scegli il colore dell'evidenziatore" aria-label="Scegli il colore dell'evidenziatore">▾</button>
+          </div>
+        </div>
+
+        <div class="gruppo">
+          <button class="icona" type="button" data-formato="justifyLeft" title="Allinea a sinistra" aria-label="Allinea a sinistra">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 6H3M15 12H3M17 18H3" /></svg>
+          </button>
+          <button class="icona" type="button" data-formato="justifyCenter" title="Allinea al centro" aria-label="Allinea al centro">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 6H3M17 12H7M19 18H5" /></svg>
+          </button>
+          <button class="icona" type="button" data-formato="justifyRight" title="Allinea a destra" aria-label="Allinea a destra">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 6H3M21 12H9M21 18H7" /></svg>
+          </button>
+          <button class="icona" type="button" data-formato="justifyFull" title="Giustifica" aria-label="Giustifica">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" /></svg>
+          </button>
+        </div>
+
+        <div class="gruppo">
+          <select id="stile-paragrafo" title="Formato del paragrafo">
+            <option value="P">Paragrafo</option>
+            <option value="H1">Titolo</option>
+            <option value="H2">Titolo 2</option>
+            <option value="H3">Titolo 3</option>
+          </select>
+          <button id="btn-stili" class="icona" type="button" title="Stili: cambia l'aspetto di Paragrafo, Titolo, Titolo 2 e Titolo 3 in tutto il documento" aria-label="Stili">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 4v16M17 4v16M19 4H9.5a4.5 4.5 0 0 0 0 9H13" /></svg>
+          </button>
+          <label class="scelta-con-icona" title="Interlinea">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7l3-3 3 3M6 4v16M3 17l3 3 3-3M13 6h8M13 12h8M13 18h8" /></svg>
+            <select id="interlinea" aria-label="Interlinea">
+              <option value="1">1</option>
+              <option value="1.15" selected>1,15</option>
+              <option value="1.5">1,5</option>
+              <option value="2">2</option>
+            </select>
+          </label>
+          <label class="scelta-con-icona" title="Spazio dopo: lo spazio sotto il paragrafo, prima di quello successivo">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18M3 9h18M12 13v8M8.5 17.5 12 21l3.5-3.5" /></svg>
+            <select id="spazio-dopo" aria-label="Spazio dopo">
+              <option value="0">0</option>
+              <option value="3">3 pt</option>
+              <option value="6">6 pt</option>
+              <option value="8" selected>8 pt</option>
+              <option value="12">12 pt</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="gruppo">
+          <button class="icona" type="button" data-formato="insertUnorderedList" title="Elenco puntato" aria-label="Elenco puntato">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path class="punto" d="M3.5 6h.01M3.5 12h.01M3.5 18h.01" /><path d="M8 6h13M8 12h13M8 18h13" /></svg>
+          </button>
+          <button class="icona" type="button" data-formato="insertOrderedList" title="Elenco numerato" aria-label="Elenco numerato">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6h11M10 12h11M10 18h11M4 6h1v4M4 10h2M6 18H4c0-1 2-2 2-3s-1-1.5-2-1" /></svg>
+          </button>
+        </div>
+
+        <div class="gruppo">
+          <button id="btn-interruzione" class="icona" type="button" title="Interruzione di pagina" aria-label="Interruzione di pagina">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3v4a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3M5 21v-4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v4M3 12h2M8 12h2M14 12h2M19 12h2" /></svg>
+          </button>
+          <button id="btn-tabella" class="icona" type="button" title="Tabella" aria-label="Tabella">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M3 15h18M9 3v18M15 3v18" /></svg>
+          </button>
+          <button id="btn-immagine" class="icona" type="button" title="Immagine" aria-label="Immagine">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="9" cy="9" r="2" /><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21" /></svg>
+          </button>
+          <button id="btn-riferimento" class="icona" type="button" title="Collega cella: mostra nel testo il valore di una cella" aria-label="Collega cella">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></svg>
+          </button>
+        </div>
+
+        <div class="gruppo">
+          <label class="interruttore-numeri" title="Numeri di pagina: acceso, i numeri compaiono in anteprima e nel file Word">
+            <input id="numeri-pagina" type="checkbox" checked aria-label="Numeri di pagina" />
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h7l5 5v13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" /><path d="M10.5 13v6M13.5 13v6M9 14.75h6M9 17.25h6" /></svg>
+          </label>
+          <div class="posizione-numeri" role="group" aria-label="Posizione del numero di pagina">
+            <button class="icona" type="button" data-posizione="sinistra" title="Numero a sinistra" aria-label="Numero a sinistra">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" /><path class="riga-pagina" d="M8 6h8M8 9h8M8 12h8" /><path d="M8 18h3" /></svg>
+            </button>
+            <button class="icona" type="button" data-posizione="centro" title="Numero al centro" aria-label="Numero al centro">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" /><path class="riga-pagina" d="M8 6h8M8 9h8M8 12h8" /><path d="M10.5 18h3" /></svg>
+            </button>
+            <button class="icona" type="button" data-posizione="destra" title="Numero a destra" aria-label="Numero a destra">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" /><path class="riga-pagina" d="M8 6h8M8 9h8M8 12h8" /><path d="M13 18h3" /></svg>
+            </button>
+          </div>
+          <select id="posizione-numero" hidden>
+            <option value="sinistra">Numero a sinistra</option>
+            <option value="centro" selected>Numero al centro</option>
+            <option value="destra">Numero a destra</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="barra-formula nascosta" id="barra-formula">
+        <label for="formula">Formula</label>
+        <input id="formula" type="text" spellcheck="false" autocomplete="off" disabled placeholder="Seleziona una cella. Esempio: =SOMMA(A1:A4) oppure =SE(A1>10;&quot;sì&quot;;&quot;no&quot;). Invio scende, Tab va a destra" />
+        <div class="elenco-formule">
+          <button id="btn-formule" type="button" aria-expanded="false" aria-controls="pannello-formule" title="Mostra l'elenco delle formule">Formule</button>
+          <div id="pannello-formule" class="pannello-formule" hidden>
+            <p>Clicca un esempio per scriverlo nella cella. Poi cambia A1 con le celle che ti servono.</p>
+            <ul>
+              <li><button type="button" data-esempio="=SOMMA(A1:A4)"><strong>SOMMA</strong><span>Somma i numeri.</span><code>=SOMMA(A1:A4)</code></button></li>
+              <li><button type="button" data-esempio="=MEDIA(A1:A4)"><strong>MEDIA</strong><span>Fa la media.</span><code>=MEDIA(A1:A4)</code></button></li>
+              <li><button type="button" data-esempio="=MIN(A1:A4)"><strong>MIN</strong><span>Prende il numero più piccolo.</span><code>=MIN(A1:A4)</code></button></li>
+              <li><button type="button" data-esempio="=MAX(A1:A4)"><strong>MAX</strong><span>Prende il numero più grande.</span><code>=MAX(A1:A4)</code></button></li>
+              <li><button type="button" data-esempio="=CONTA(A1:A4)"><strong>CONTA</strong><span>Conta quante celle hanno un numero.</span><code>=CONTA(A1:A4)</code></button></li>
+              <li><button type="button" data-esempio="=ARROTONDA(A1;2)"><strong>ARROTONDA</strong><span>Arrotonda. Il 2 sono i decimali.</span><code>=ARROTONDA(A1;2)</code></button></li>
+              <li><button type="button" data-esempio="=SE(A1&gt;10;&quot;alto&quot;;&quot;basso&quot;)"><strong>SE</strong><span>Se la condizione è vera scrive la prima parola, altrimenti la seconda.</span><code>=SE(A1&gt;10;"alto";"basso")</code></button></li>
+              <li><button type="button" data-esempio="=CALCOLA(A1)"><strong>CALCOLA</strong><span>Calcola un conto scritto come testo in un’altra cella.</span><code>=CALCOLA(A1)</code></button></li>
+              <li><button type="button" data-esempio="=A1+B1"><strong>Conto</strong><span>Somma, toglie, moltiplica o divide due celle.</span><code>=A1+B1</code></button></li>
+            </ul>
+          </div>
+        </div>
+        <button id="btn-totale" type="button" disabled title="Scrive nella cella la somma dei numeri che stanno sopra">Totale colonna</button>
+        <button id="btn-unisci" type="button" disabled title="Unisce le celle selezionate in una sola. Resta il testo della prima in alto a sinistra">Unisci</button>
+        <button id="btn-separa" type="button" disabled title="Divide di nuovo una cella unita">Separa</button>
+        <span id="etichetta-cella">Nessuna cella selezionata</span>
+      </div>
+
+      <details class="aiuto">
+        <summary>Come si usa</summary>
+        <ul>
+          <li>Mentre scrivi vedi le pagine una sotto l’altra, con uno stacco in mezzo. Il tasto destro sul testo apre grassetto, carattere, colori, allineamento e <strong>Commento</strong>. Il tasto destro sul bordo della pagina (la fascia bianca intorno al testo) apre formato, larghezza, altezza e margini.</li>
+          <li>In cima a ogni pagina c’è l’<strong>intestazione</strong>, in fondo il <strong>piè di pagina</strong>. Quello che scrivi lì si ripete su tutte le pagine, in anteprima e in Word. Se il testo non entra, allarga quel margine. <strong>Dal bordo alto</strong>, nel menu Pagina, dice quanti millimetri lasciare tra il bordo alto della pagina e l’intestazione.</li>
+          <li>In una cella puoi scrivere testo, numeri oppure una formula: <code>=SOMMA(A1:A4)</code>, <code>=A1+B1</code>, <code>=MEDIA(A1:A4)</code>. Con <code>=SE(A1&gt;10;&quot;alto&quot;;&quot;basso&quot;)</code> la cella scrive il primo risultato se la condizione è vera, altrimenti il secondo. I confronti sono <code>&gt;</code> <code>&lt;</code> <code>&gt;=</code> <code>&lt;=</code> <code>=</code> <code>&lt;&gt;</code>. Il pulsante <strong>Formule</strong>, sulla riga della formula, mostra l’elenco: clicca un esempio per metterlo nella cella.</li>
+          <li>Il pulsante <strong>Stili…</strong> cambia l’aspetto di Paragrafo, Titolo, Titolo 2 e Titolo 3 in tutto il documento: carattere, dimensione, colore, allineamento, interlinea e spazi. Con <strong>Nuovo stile…</strong> ne crei di tuoi (per esempio “Nota” o “Citazione”), che poi trovi nella tendina Paragrafo. Gli stili si salvano con la relazione e in Word diventano stili veri.</li>
+          <li>Il tasto destro sul quadrato in alto a sinistra della tabella, dove si incontrano lettere e numeri, apre codice, titolo, bordi, posizione nel foglio, riga totali ed elimina.</li>
+          <li><strong>Riga totali</strong> chiede quali colonne sommare e resta sempre in fondo.</li>
+          <li>Clicca la lettera (A, B, C…) o il numero di riga per scegliere tutta la colonna o la riga: da lì imposti i millimetri, la nascondi o cambi il carattere e lo sfondo. Trascina la lettera o il numero per spostarla. Trascina il bordino per stringere. Il bordo destro della tabella cambia la larghezza, quello in basso l’altezza. Il quadratino in basso a destra rimpicciolisce o ingrandisce tutta la tabella insieme, lettere comprese.</li>
+          <li>Tasto destro su una cella: <strong>+ Riga</strong> sotto, <strong>− Riga</strong> toglie quella riga, <strong>+ Colonna</strong> a destra, <strong>− Colonna</strong> toglie quella colonna. Poi tipo (anche <strong>Euro</strong>), bordi, grassetto, corsivo, sottolineato, barrato, allineamento, colori, carattere e <strong>Applica alla colonna</strong>.</li>
+          <li>Trascina il mouse sulle celle per selezionarle insieme e formattarle tutte. <strong>Unisci</strong> le fa diventare una sola (resta il testo di quella in alto a sinistra). <strong>Separa</strong> le divide di nuovo.</li>
+          <li>Il <strong>quadratino</strong> in basso a destra della selezione riempie le celle vicine: trascinalo in giù o di lato. Le formule si adattano (=A1 diventa =A2) e due numeri in fila continuano la serie (1, 2 → 3, 4…). Trascinando il <strong>bordo</strong> della selezione sposti il contenuto altrove. Esc annulla.</li>
+          <li>I decimali usano la virgola: <code>1,5</code>. Per unire più parti usa il punto e virgola: <code>=SOMMA(A1:A3;10)</code>.</li>
+          <li>Ogni tabella ha un codice unico, per esempio <code>Tabella1</code>. Nel testo scrivi <code>=Tabella1.C2</code> e poi uno spazio: il valore resta collegato. Più comodo: clicca nel testo, premi <strong>Collega cella</strong> e poi clicca la cella nella tabella.</li>
+          <li>Le immagini si inseriscono col pulsante oppure con <strong>Ctrl+V</strong>. Trascina i bordi per cambiare larghezza o altezza, e la foto per spostarla. Il tasto destro apre la barra: misure, posizione, davanti e dietro.</li>
+          <li>Le prime icone della barra sono <strong>Taglia</strong>, <strong>Copia</strong>, <strong>Incolla</strong> e <strong>Copia formato</strong> (il pennello): metti il cursore sul testo che ti piace, premi il pennello e seleziona il testo da cambiare. Doppio clic sul pennello per usarlo più volte, <strong>Esc</strong> per finire.</li>
+          <li><strong>Righello e tabulazioni</strong>: il tasto <strong>Tab</strong> salta al prossimo punto del righello. Scegli il tipo col quadratino a sinistra del righello (a sinistra, al centro, a destra, decimale), poi clicca sul righello per mettere la tabulazione nel paragrafo dove sta il cursore. Trascinala per spostarla, trascinala fuori dal righello per toglierla. I <strong>rientri</strong> si trascinano: triangolo in alto per la prima riga, triangolo in basso per l’inizio delle altre righe, quadratino per spostare tutto il paragrafo, triangolo a destra per la fine del paragrafo. A sinistra della pagina c’è il <strong>righello verticale</strong>: lo zero è il margine alto e i numeri sono i centimetri. Trascina la <strong>lineetta verde</strong> sul confine tra grigio e bianco: in alto cambi i margini sinistro e destro, a sinistra i margini alto e basso. Esc annulla.</li>
+          <li><strong>Salva</strong> tiene il lavoro modificabile. <strong>Esporta DOCX</strong> crea il file Word.</li>
+        </ul>
+      </details>
+
+      <div class="righello" id="righello">
+        <button id="tipo-tabulazione" class="tipo-tabulazione" type="button" aria-label="Tipo di tabulazione"></button>
+        <div class="righello-pista" id="righello-pista"></div>
+      </div>
+
+      <div class="banco-foglio">
+      <div class="righello-verticale" id="righello-verticale" title="Righello verticale: lo zero è il margine alto, i numeri sono i centimetri"></div>
+      <main class="scrivania" id="scrivania">
+        <div class="zoom-contenitore" id="zoom-contenitore">
+        <div class="cornice-foglio" id="cornice-foglio">
+          <div class="carte-pagina" id="carte-pagina" aria-hidden="true"></div>
+          <div id="intestazione-foglio" class="fascia-foglio fascia-intestazione vuota" contenteditable="true" spellcheck="true" data-vuoto="Intestazione" aria-label="Intestazione"></div>
+          <div id="pie-foglio" class="fascia-foglio fascia-pie vuota" contenteditable="true" spellcheck="true" data-vuoto="Piè di pagina" aria-label="Piè di pagina"></div>
+        <article id="foglio" class="foglio testo-relazione" contenteditable="true" spellcheck="true" aria-label="Foglio della relazione">
+          <p><br></p>
+        </article>
+        </div>
+        </div>
+      </main>
+      </div>
+
+      <footer id="stato" class="stato">Pronto.</footer>
+      <div class="zoom-pagina" title="Zoom della pagina: Ctrl + rotellina del mouse. Ctrl+0 torna al 100%.">
+        <button id="zoom-meno" type="button" title="Rimpicciolisci (Ctrl + −)">−</button>
+        <button id="zoom-valore" type="button" title="Torna al 100% (Ctrl+0)">100%</button>
+        <button id="zoom-piu" type="button" title="Ingrandisci (Ctrl + +)">+</button>
+      </div>
+    </div>
+
+    <div id="menu-testo" class="menu-testo" hidden>
+      <p class="menu-testo-titolo">Testo</p>
+      <div class="azioni-testo">
+        <button type="button" data-comando="bold" title="Grassetto"><b>G</b></button>
+        <button type="button" data-comando="italic" title="Corsivo"><i>C</i></button>
+        <button type="button" data-comando="underline" title="Sottolineato"><u>S</u></button>
+        <button type="button" data-comando="strikeThrough" title="Barrato"><s>B</s></button>
+        <div class="scelta-colore">
+          <button class="colore-metti" data-colore-metti="testo" type="button" title="Colore del testo: mette l'ultimo colore scelto" aria-label="Colore del testo">
+            <span class="colore-segno">A</span><span class="colore-barra" data-colore-barra="testo"></span>
+          </button>
+          <button class="colore-apri" data-colore-apri="testo" type="button" title="Scegli il colore del testo" aria-label="Scegli il colore del testo">▾</button>
+        </div>
+        <div class="scelta-colore">
+          <button class="colore-metti" data-colore-metti="sfondo" type="button" title="Evidenziatore: mette l'ultimo colore scelto" aria-label="Evidenziatore">
+            <span class="colore-segno"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 11-6 6v3h9l3-3" /><path d="m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4" /></svg></span><span class="colore-barra" data-colore-barra="sfondo"></span>
+          </button>
+          <button class="colore-apri" data-colore-apri="sfondo" type="button" title="Scegli il colore dell'evidenziatore" aria-label="Scegli il colore dell'evidenziatore">▾</button>
+        </div>
+      </div>
+      <div class="voci-affiancate">
+      <label class="voce-testo">Carattere
+        <select id="menu-testo-font" title="Tipo di carattere">
+          <option value="Calibri">Calibri</option>
+          <option value="Times New Roman">Times New Roman</option>
+          <option value="Georgia">Georgia</option>
+          <option value="Arial">Arial</option>
+          <option value="Segoe UI">Segoe UI</option>
+          <option value="Courier New">Courier New</option>
+        </select>
+      </label>
+      <label class="voce-testo">Dimensione
+        <select id="menu-testo-dimensione" title="Dimensione del carattere">
+          <option>10</option>
+          <option>11</option>
+          <option>12</option>
+          <option>14</option>
+          <option>16</option>
+          <option>18</option>
+          <option>20</option>
+          <option>24</option>
+          <option>28</option>
+          <option>36</option>
+        </select>
+      </label>
+      </div>
+      <button id="menu-testo-commento" type="button" title="Attacca un commento alle parole selezionate. Se il cursore è già su un commento, lo puoi cambiare o togliere.">Commento…</button>
+      <div class="azioni-testo">
+        <button type="button" data-comando="justifyLeft" title="Allinea a sinistra">Sinistra</button>
+        <button type="button" data-comando="justifyCenter" title="Allinea al centro">Centro</button>
+        <button type="button" data-comando="justifyRight" title="Allinea a destra">Destra</button>
+        <button type="button" data-comando="justifyFull" title="Testo giustificato">Giustifica</button>
+      </div>
+      <div class="voci-affiancate voci-paragrafo">
+      <label class="voce-testo">Stile
+        <select id="menu-testo-stile" title="Formato del paragrafo">
+          <option value="P">Paragrafo</option>
+          <option value="H1">Titolo</option>
+          <option value="H2">Titolo 2</option>
+          <option value="H3">Titolo 3</option>
+        </select>
+      </label>
+      <label class="voce-testo">Interlinea
+        <select id="menu-testo-interlinea" title="Interlinea">
+          <option value="1">1</option>
+          <option value="1.15">1,15</option>
+          <option value="1.5">1,5</option>
+          <option value="2">2</option>
+        </select>
+      </label>
+      <label class="voce-testo">Spazio dopo
+        <select id="menu-testo-spazio" title="Spazio sotto il paragrafo, prima di quello successivo">
+          <option value="0">0</option>
+          <option value="3">3 pt</option>
+          <option value="6">6 pt</option>
+          <option value="8">8 pt</option>
+          <option value="12">12 pt</option>
+        </select>
+      </label>
+      </div>
+      <div class="azioni-testo">
+        <button class="icona" type="button" data-comando="insertUnorderedList" title="Elenco puntato" aria-label="Elenco puntato">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path class="punto" d="M3.5 6h.01M3.5 12h.01M3.5 18h.01" /><path d="M8 6h13M8 12h13M8 18h13" /></svg>
+        </button>
+        <button class="icona" type="button" data-comando="insertOrderedList" title="Elenco numerato" aria-label="Elenco numerato">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6h11M10 12h11M10 18h11M4 6h1v4M4 10h2M6 18H4c0-1 2-2 2-3s-1-1.5-2-1" /></svg>
+        </button>
+        <button class="icona" type="button" data-collegamento title="Collegamento a un sito o a un'e-mail (Ctrl+K)" aria-label="Collegamento">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" /></svg>
+        </button>
+      </div>
+      <button id="menu-testo-chiudi" type="button">Chiudi</button>
+    </div>
+
+    <div id="menu-pagina" class="menu-pagina" hidden>
+      <p class="menu-pagina-titolo">Pagina</p>
+      <label class="voce-pagina" for="formato-pagina">Formato
+        <select id="formato-pagina" title="Formato UNI della pagina">
+          <option value="A3">A3</option>
+          <option value="A4" selected>A4</option>
+          <option value="A5">A5</option>
+          <option value="A6">A6</option>
+          <option value="personalizzato">Personalizzato</option>
+        </select>
+      </label>
+      <label class="voce-pagina" for="larghezza-pagina">Larghezza mm
+        <input id="larghezza-pagina" type="number" min="100" max="600" value="210" title="Larghezza della pagina in millimetri" />
+      </label>
+      <label class="voce-pagina" for="altezza-pagina">Altezza mm
+        <input id="altezza-pagina" type="number" min="100" max="600" value="297" title="Altezza della pagina in millimetri" />
+      </label>
+      <p class="gruppo-pagina">Margini</p>
+      <label class="voce-pagina" for="margine-sopra">Sopra mm
+        <input id="margine-sopra" type="number" min="0" max="80" value="18" title="Margine in alto, in millimetri. Qui sta l’intestazione." />
+      </label>
+      <label class="voce-pagina" for="margine-sotto">Sotto mm
+        <input id="margine-sotto" type="number" min="0" max="80" value="22" title="Margine in basso, in millimetri. Qui sta il piè di pagina." />
+      </label>
+      <label class="voce-pagina" for="margine-sinistra">Sinistra mm
+        <input id="margine-sinistra" type="number" min="0" max="80" value="18" title="Margine a sinistra, in millimetri" />
+      </label>
+      <label class="voce-pagina" for="margine-destra">Destra mm
+        <input id="margine-destra" type="number" min="0" max="80" value="18" title="Margine a destra, in millimetri" />
+      </label>
+      <p class="gruppo-pagina">Intestazione</p>
+      <label class="voce-pagina" for="distanza-intestazione">Dal bordo alto mm
+        <input id="distanza-intestazione" type="number" min="0" max="80" value="2" title="Distanza tra il bordo alto della pagina e il bordo alto dell’intestazione, in millimetri." />
+      </label>
+      <button id="menu-pagina-chiudi" type="button">Chiudi</button>
+    </div>
+
+    <div id="avviso-collega" class="avviso-collega" hidden>
+      <span>Clicca la cella da mostrare nel testo</span>
+      <button id="collega-a-mano" type="button">Scrivi a mano…</button>
+      <button id="collega-annulla" type="button">Annulla (Esc)</button>
+    </div>
+
+    <div id="avviso-calcola" class="avviso-calcola" hidden>
+      <span>Clicca la cella con l’espressione da calcolare</span>
+      <button id="calcola-annulla" type="button">Annulla (Esc)</button>
+    </div>
+
+    <div id="menu-cella" class="menu-cella" hidden>
+      <p class="menu-cella-titolo">Cella</p>
+      <p class="gruppo-menu">Righe e colonne</p>
+      <div class="azioni-struttura">
+        <button id="menu-aggiungi-riga" type="button" title="Aggiunge una riga sotto questa cella">+ Riga</button>
+        <button id="menu-togli-riga" type="button" title="Toglie la riga di questa cella">− Riga</button>
+        <button id="menu-aggiungi-colonna" type="button" title="Aggiunge una colonna a destra di questa cella">+ Colonna</button>
+        <button id="menu-togli-colonna" type="button" title="Toglie la colonna di questa cella">− Colonna</button>
+      </div>
+      <p class="gruppo-menu">Calcolo</p>
+      <button id="menu-calcola" class="azione-menu" type="button" title="Scegli la cella dove hai scritto l’espressione, per esempio (5.40+5.2)/2. Il risultato comparirà qui.">Calcola da un’altra cella…</button>
+      <button id="menu-totale" class="azione-menu" type="button" title="Somma tutte le celle sopra questa, nella stessa colonna">Totale colonna</button>
+      <p class="gruppo-menu">Formato</p>
+      <label class="voce-menu">Tipo
+        <select id="menu-tipo" title="Come mostrare il contenuto della cella">
+          <option value="auto">Automatico</option>
+          <option value="testo">Testo</option>
+          <option value="numero">Numero</option>
+          <option value="euro">Euro</option>
+        </select>
+      </label>
+      <label class="voce-menu">Decimali
+        <select id="menu-decimali" title="Quanti numeri dopo la virgola mostrare. Il valore vero non cambia: per arrotondarlo davvero usa =ARROTONDA(...;2)">
+          <option value="">Automatico</option>
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+      </label>
+      <label class="voce-menu">Bordi
+        <select id="menu-bordo" title="Bordi di questa cella">
+          <option value="">Come la tabella</option>
+          <option value="tutti">Tutti i lati</option>
+          <option value="sotto">Solo sotto</option>
+          <option value="nessuno">Nessuno</option>
+        </select>
+      </label>
+      <button id="menu-applica-colonna" class="azione-menu" type="button" title="Copia tipo, aspetto, allineamento e bordi su tutte le celle della stessa colonna">Applica alla colonna</button>
+      <div class="stili-cella">
+        <button type="button" data-stile="grassetto" title="Grassetto"><b>G</b></button>
+        <button type="button" data-stile="corsivo" title="Corsivo"><i>C</i></button>
+        <button type="button" data-stile="sottolineato" title="Sottolineato"><u>S</u></button>
+        <button type="button" data-stile="barrato" title="Barrato"><s>B</s></button>
+      </div>
+      <div class="colori-cella">
+        <span>Colori</span>
+        <div class="scelta-colore">
+          <button class="colore-metti" data-colore-metti="cella-sfondo" type="button" title="Colore della cella: mette l'ultimo colore scelto" aria-label="Colore della cella">
+            <span class="colore-segno"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m19 11-8-8-8.6 8.6a2 2 0 0 0 0 2.8l5.2 5.2c.8.8 2 .8 2.8 0L19 11Z" /><path d="m5 2 5 5" /><path d="M2 13h15" /><path d="M22 20a2 2 0 1 1-4 0c0-1.6 1.7-2.4 2-4 .3 1.6 2 2.4 2 4Z" /></svg></span><span class="colore-barra" data-colore-barra="cella-sfondo"></span>
+          </button>
+          <button class="colore-apri" data-colore-apri="cella-sfondo" type="button" title="Scegli il colore della cella" aria-label="Scegli il colore della cella">▾</button>
+        </div>
+        <div class="scelta-colore">
+          <button class="colore-metti" data-colore-metti="cella-testo" type="button" title="Colore delle lettere: mette l'ultimo colore scelto" aria-label="Colore delle lettere">
+            <span class="colore-segno">A</span><span class="colore-barra" data-colore-barra="cella-testo"></span>
+          </button>
+          <button class="colore-apri" data-colore-apri="cella-testo" type="button" title="Scegli il colore delle lettere" aria-label="Scegli il colore delle lettere">▾</button>
+        </div>
+      </div>
+      <label class="voce-menu">Tipo carattere
+        <select id="menu-font" title="Famiglia delle lettere">
+          <option value="">Come il foglio</option>
+          <option value="Calibri">Calibri</option>
+          <option value="Times New Roman">Times New Roman</option>
+          <option value="Georgia">Georgia</option>
+          <option value="Arial">Arial</option>
+          <option value="Segoe UI">Segoe UI</option>
+          <option value="Courier New">Courier New</option>
+        </select>
+      </label>
+      <label class="voce-menu">Altezza carattere
+        <input id="menu-altezza" class="misura-testo" type="text" inputmode="decimal" list="lista-altezza" placeholder="Come il foglio" title="Quanto sono alte le lettere, in punti. 12 è una misura normale, 50 è molto grande. Vuoto significa come il foglio." />
+        <datalist id="lista-altezza">
+          <option value="10"></option>
+          <option value="12"></option>
+          <option value="14"></option>
+          <option value="18"></option>
+          <option value="24"></option>
+          <option value="36"></option>
+          <option value="50"></option>
+          <option value="72"></option>
+        </datalist>
+      </label>
+      <label class="voce-menu">Allineamento
+        <select id="menu-allinea" title="Dove mettere il testo dentro la cella">
+          <option value="">Automatico</option>
+          <option value="sinistra">Sinistra</option>
+          <option value="centro">Centro</option>
+          <option value="destra">Destra</option>
+        </select>
+      </label>
+      <button id="menu-cella-chiudi" type="button">Chiudi</button>
+    </div>
+
+    <div id="pannello-asse" class="pannello-asse" hidden>
+      <p id="asse-titolo" class="pannello-asse-titolo">Colonna</p>
+      <label class="asse-voce">Misura in mm
+        <input id="asse-misura" type="text" inputmode="decimal" title="Larghezza della colonna o altezza della riga, in millimetri. Premi Invio per applicarla." />
+      </label>
+      <button id="asse-imposta" type="button">Imposta misura</button>
+      <button id="asse-nascondi" type="button">Nascondi</button>
+      <p class="asse-gruppo">Carattere delle celle</p>
+      <label class="asse-voce">Tipo carattere
+        <select id="asse-font" title="Famiglia delle lettere">
+          <option value="">Come il foglio</option>
+          <option value="misto" hidden data-salta>Diversi</option>
+          <option value="Calibri">Calibri</option>
+          <option value="Times New Roman">Times New Roman</option>
+          <option value="Georgia">Georgia</option>
+          <option value="Arial">Arial</option>
+          <option value="Segoe UI">Segoe UI</option>
+          <option value="Courier New">Courier New</option>
+        </select>
+      </label>
+      <label class="asse-voce">Altezza carattere
+        <input id="asse-altezza" class="misura-testo" type="text" inputmode="decimal" list="lista-altezza" placeholder="Come il foglio" title="Quanto sono alte le lettere, in punti. 12 è una misura normale. Vuoto significa come il foglio." />
+      </label>
+      <div class="asse-stili">
+        <button type="button" data-stile="grassetto" title="Grassetto"><b>G</b></button>
+        <button type="button" data-stile="corsivo" title="Corsivo"><i>C</i></button>
+        <button type="button" data-stile="sottolineato" title="Sottolineato"><u>S</u></button>
+        <button type="button" data-stile="barrato" title="Barrato"><s>B</s></button>
+      </div>
+      <div class="asse-colori">
+        <span>Sfondo</span>
+        <div class="scelta-colore">
+          <button class="colore-metti" data-colore-metti="asse-sfondo" type="button" title="Colore di sfondo: mette l'ultimo colore scelto" aria-label="Colore di sfondo">
+            <span class="colore-segno"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m19 11-8-8-8.6 8.6a2 2 0 0 0 0 2.8l5.2 5.2c.8.8 2 .8 2.8 0L19 11Z" /><path d="m5 2 5 5" /><path d="M2 13h15" /><path d="M22 20a2 2 0 1 1-4 0c0-1.6 1.7-2.4 2-4 .3 1.6 2 2.4 2 4Z" /></svg></span><span class="colore-barra" data-colore-barra="asse-sfondo"></span>
+          </button>
+          <button class="colore-apri" data-colore-apri="asse-sfondo" type="button" title="Scegli il colore di sfondo" aria-label="Scegli il colore di sfondo">▾</button>
+        </div>
+      </div>
+      <div class="asse-colori">
+        <span>Colore lettere</span>
+        <div class="scelta-colore">
+          <button class="colore-metti" data-colore-metti="asse-testo" type="button" title="Colore delle lettere: mette l'ultimo colore scelto" aria-label="Colore delle lettere">
+            <span class="colore-segno">A</span><span class="colore-barra" data-colore-barra="asse-testo"></span>
+          </button>
+          <button class="colore-apri" data-colore-apri="asse-testo" type="button" title="Scegli il colore delle lettere" aria-label="Scegli il colore delle lettere">▾</button>
+        </div>
+      </div>
+      <button id="asse-chiudi" type="button">Chiudi</button>
+    </div>
+
+    <div id="tavolozza-colori" class="tavolozza" hidden role="dialog" aria-label="Scegli il colore">
+      <button id="tavolozza-togli" class="tavolozza-togli" type="button"><span></span><span>Automatico</span></button>
+      <p class="tavolozza-titolo">Colori</p>
+      <div id="tavolozza-tema" class="tavolozza-griglia"></div>
+      <p class="tavolozza-titolo">Colori standard</p>
+      <div id="tavolozza-standard" class="tavolozza-griglia"></div>
+      <p id="tavolozza-titolo-recenti" class="tavolozza-titolo">Usati di recente</p>
+      <div id="tavolozza-recenti" class="tavolozza-griglia"></div>
+      <label class="tavolozza-altri">Altri colori… <input id="tavolozza-altro" type="color" value="#c00000" /></label>
+    </div>
+
+    <div id="finestra-stili" class="finestra-stili" hidden role="dialog" aria-label="Stili del documento">
+      <p class="stili-titolo">Stili del documento</p>
+      <p class="stili-spiega">Le modifiche valgono per tutti i paragrafi o titoli di quel tipo, anche in Word.</p>
+      <div class="stili-riga stili-riga-quale">
+        <label class="stili-voce">Stile da cambiare
+          <select id="stili-quale">
+            <option value="p">Paragrafo</option>
+            <option value="h1">Titolo</option>
+            <option value="h2">Titolo 2</option>
+            <option value="h3">Titolo 3</option>
+          </select>
+        </label>
+        <button id="stili-nuovo" type="button" title="Crea uno stile tuo, partendo dal Paragrafo">Nuovo stile…</button>
+      </div>
+      <div class="stili-gestione">
+        <button id="stili-rinomina" type="button" hidden>Rinomina…</button>
+        <button id="stili-elimina" type="button" hidden>Elimina stile</button>
+      </div>
+      <div class="stili-riga">
+        <label class="stili-voce">Carattere
+          <select id="stili-font">
+            <option value="Calibri">Calibri</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Arial">Arial</option>
+            <option value="Segoe UI">Segoe UI</option>
+            <option value="Courier New">Courier New</option>
+          </select>
+        </label>
+        <label class="stili-voce stili-stretta">Dimensione pt
+          <input id="stili-dimensione" type="number" min="6" max="72" step="1" />
+        </label>
+      </div>
+      <div class="stili-riga">
+        <label class="stili-spunta"><input id="stili-grassetto" type="checkbox" /> Grassetto</label>
+        <label class="stili-spunta"><input id="stili-corsivo" type="checkbox" /> Corsivo</label>
+        <label class="stili-spunta">Colore <input id="stili-colore" type="color" /></label>
+      </div>
+      <div class="stili-riga">
+        <label class="stili-voce">Allineamento
+          <select id="stili-allinea">
+            <option value="left">Sinistra</option>
+            <option value="center">Centro</option>
+            <option value="right">Destra</option>
+            <option value="justify">Giustificato</option>
+          </select>
+        </label>
+        <label class="stili-voce">Interlinea
+          <select id="stili-interlinea">
+            <option value="1">1</option>
+            <option value="1.15">1,15</option>
+            <option value="1.5">1,5</option>
+            <option value="2">2</option>
+          </select>
+        </label>
+      </div>
+      <div class="stili-riga">
+        <label class="stili-voce stili-stretta">Spazio sopra pt
+          <input id="stili-sopra" type="number" min="0" max="72" step="1" />
+        </label>
+        <label class="stili-voce stili-stretta">Spazio sotto pt
+          <input id="stili-sotto" type="number" min="0" max="72" step="1" />
+        </label>
+      </div>
+      <p class="stili-esempio-titolo">Anteprima</p>
+      <div id="stili-esempio" class="stili-esempio">Così apparirà il testo con questo stile.</div>
+      <div class="stili-azioni">
+        <button id="stili-ripristina" type="button" title="Rimette questo stile come all'inizio">Ripristina questo stile</button>
+        <button id="stili-chiudi" type="button">Chiudi</button>
+      </div>
+    </div>
+
+    <div id="anteprima" class="anteprima nascosta"></div>
+    <input id="file-immagine" type="file" accept="image/*" hidden />
+
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>

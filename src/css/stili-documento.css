@@ -1,0 +1,219 @@
+/* Stili del documento (Paragrafo, Titolo, Titolo 2, Titolo 3).
+   I valori arrivano da stili-documento.js tramite le variabili --stile-…;
+   i numeri dopo la virgola sono quelli di partenza. */
+
+.foglio > p,
+.foglio > div:not(.interruzione):not(.taglio-pagina),
+.foglio > ul,
+.foglio > ol,
+.corpo-pagina > p,
+.corpo-pagina > div:not(.interruzione-stampa),
+.corpo-pagina > ul,
+.corpo-pagina > ol,
+.misuratore > p,
+.misuratore > div:not(.interruzione-stampa),
+.misuratore > ul,
+.misuratore > ol,
+.vista-documento > p,
+.vista-documento > div:not(.interruzione-stampa),
+.vista-documento > ul,
+.vista-documento > ol {
+  font-family: var(--stile-p-font, "Calibri"), Carlito, "Segoe UI", sans-serif;
+  font-size: var(--stile-p-dimensione, 12pt);
+  font-weight: var(--stile-p-peso, 400);
+  font-style: var(--stile-p-forma, normal);
+  color: var(--stile-p-colore, #1c1915);
+  text-align: var(--stile-p-allinea, left);
+  line-height: var(--stile-p-interlinea, 1.15);
+  margin-top: var(--stile-p-sopra, 0pt);
+  margin-bottom: var(--stile-p-sotto, 8pt);
+}
+
+.foglio > h1,
+.corpo-pagina > h1,
+.misuratore > h1,
+.vista-documento > h1 {
+  font-family: var(--stile-h1-font, "Calibri"), Carlito, "Segoe UI", sans-serif;
+  font-size: var(--stile-h1-dimensione, 22pt);
+  font-weight: var(--stile-h1-peso, 700);
+  font-style: var(--stile-h1-forma, normal);
+  color: var(--stile-h1-colore, #1c1915);
+  text-align: var(--stile-h1-allinea, left);
+  line-height: var(--stile-h1-interlinea, 1.15);
+  margin: var(--stile-h1-sopra, 0pt) 0 var(--stile-h1-sotto, 12pt);
+}
+
+.foglio > h2,
+.corpo-pagina > h2,
+.misuratore > h2,
+.vista-documento > h2 {
+  font-family: var(--stile-h2-font, "Calibri"), Carlito, "Segoe UI", sans-serif;
+  font-size: var(--stile-h2-dimensione, 16pt);
+  font-weight: var(--stile-h2-peso, 700);
+  font-style: var(--stile-h2-forma, normal);
+  color: var(--stile-h2-colore, #1c1915);
+  text-align: var(--stile-h2-allinea, left);
+  line-height: var(--stile-h2-interlinea, 1.15);
+  margin: var(--stile-h2-sopra, 12pt) 0 var(--stile-h2-sotto, 8pt);
+}
+
+.foglio > h3,
+.corpo-pagina > h3,
+.misuratore > h3,
+.vista-documento > h3 {
+  font-family: var(--stile-h3-font, "Calibri"), Carlito, "Segoe UI", sans-serif;
+  font-size: var(--stile-h3-dimensione, 14pt);
+  font-weight: var(--stile-h3-peso, 700);
+  font-style: var(--stile-h3-forma, normal);
+  color: var(--stile-h3-colore, #1c1915);
+  text-align: var(--stile-h3-allinea, left);
+  line-height: var(--stile-h3-interlinea, 1.15);
+  margin: var(--stile-h3-sopra, 10pt) 0 var(--stile-h3-sotto, 6pt);
+}
+
+/* Finestra "Stili" */
+
+.finestra-stili {
+  position: fixed;
+  z-index: 45;
+  top: 90px;
+  right: 24px;
+  width: min(360px, calc(100vw - 32px));
+  max-height: calc(100vh - 110px);
+  overflow-y: auto;
+  padding: 14px;
+  background: #fffdf8;
+  border: 1px solid #d5cec0;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(40, 32, 18, 0.25);
+  font-size: 13px;
+  color: #1c1915;
+}
+
+.finestra-stili[hidden] {
+  display: none;
+}
+
+.stili-titolo {
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.stili-spiega {
+  margin: 0 0 12px;
+  color: #6d655b;
+}
+
+.stili-gestione {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: -2px 0 12px;
+}
+
+.stili-gestione:not(:has(button:not([hidden]))) {
+  display: none;
+}
+
+.stili-riga-quale #stili-nuovo {
+  margin-bottom: 10px;
+  padding: 8px 10px;
+}
+
+.stili-gestione button,
+#stili-nuovo {
+  padding: 5px 8px;
+  border: 1px solid #d5cec0;
+  border-radius: 6px;
+  background: white;
+  color: #1c1915;
+  font-size: 12px;
+}
+
+.stili-gestione button[hidden] {
+  display: none;
+}
+
+#stili-elimina {
+  color: #8f1d1d;
+}
+
+.stili-riga {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: end;
+}
+
+.stili-voce {
+  display: grid;
+  flex: 1 1 140px;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.stili-voce.stili-stretta {
+  flex: 1 1 90px;
+}
+
+.stili-voce select,
+.stili-voce input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid #d5cec0;
+  border-radius: 6px;
+  background: white;
+  color: #1c1915;
+  font-size: 13px;
+}
+
+.stili-spunta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.stili-spunta input[type="color"] {
+  width: 42px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid #d5cec0;
+  border-radius: 6px;
+}
+
+.stili-esempio-titolo {
+  margin: 4px 0;
+  color: #6d655b;
+}
+
+.stili-esempio {
+  padding: 10px;
+  border: 1px dashed #d5cec0;
+  border-radius: 8px;
+  background: white;
+  overflow-wrap: anywhere;
+}
+
+.stili-azioni {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.stili-azioni button {
+  flex: 1;
+  padding: 7px 10px;
+  border: 1px solid #d5cec0;
+  border-radius: 8px;
+  background: white;
+  color: #1c1915;
+}
+
+#stili-chiudi {
+  border-color: #1f4d3a;
+  background: #1f4d3a;
+  color: white;
+}

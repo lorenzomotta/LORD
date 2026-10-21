@@ -1,0 +1,67 @@
+/* Interruttore dei numeri di pagina e le tre icone della posizione. */
+
+.interruttore-numeri {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 31px;
+  box-sizing: border-box;
+  border: 1px solid #d5cec0;
+  border-radius: 6px;
+  background: #fffdf8;
+  color: #1c1915;
+  cursor: pointer;
+}
+
+.interruttore-numeri:hover {
+  background: #efe8da;
+}
+
+/* La casella c'è ancora (la legge il programma), ma non si vede: si clicca l'icona. */
+.interruttore-numeri input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.interruttore-numeri:has(input:checked) {
+  background: #1f4d3a;
+  border-color: #1f4d3a;
+  color: #fffdf8;
+}
+
+.interruttore-numeri:focus-within {
+  outline: 2px solid #1f4d3a;
+  outline-offset: 1px;
+}
+
+.interruttore-numeri svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.posizione-numeri {
+  display: inline-flex;
+  gap: 2px;
+}
+
+/* Le righe di testo finte della paginetta: più sottili, per far risaltare il numero. */
+.posizione-numeri svg .riga-pagina {
+  stroke-width: 1.2;
+  opacity: 0.55;
+}
+
+/* Con i numeri spenti la posizione non serve. */
+.gruppo:has(#numeri-pagina:not(:checked)) .posizione-numeri {
+  opacity: 0.4;
+  pointer-events: none;
+}

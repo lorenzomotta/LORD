@@ -1,0 +1,64 @@
+.cornice-foglio.sopra-bordo-pagina,
+.cornice-foglio.sopra-bordo-pagina * {
+  cursor: context-menu;
+}
+
+.menu-pagina {
+  position: fixed;
+  z-index: 40;
+  width: min(240px, calc(100vw - 16px));
+  max-height: calc(100vh - 16px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 12px;
+  background: #fffdf8;
+  border: 1px solid #d5cec0;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(40, 32, 18, 0.25);
+}
+
+.menu-pagina[hidden] {
+  display: none;
+}
+
+.menu-pagina-titolo {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.gruppo-pagina {
+  margin: 8px 0 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #5c564c;
+}
+
+.voce-pagina {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.voce-pagina select,
+.voce-pagina input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #d5cec0;
+  background: white;
+  border-radius: 6px;
+  padding: 6px 8px;
+  color: #1c1915;
+  font-size: 13px;
+}
+
+#menu-pagina-chiudi {
+  width: 100%;
+  margin-top: 4px;
+  border: 1px solid #1f4d3a;
+  background: #1f4d3a;
+  color: white;
+  border-radius: 8px;
+  padding: 7px 10px;
+}

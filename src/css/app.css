@@ -1,0 +1,134 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  color: #1c1915;
+  background: #e6e0d4;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+code {
+  font-family: Consolas, "Courier New", monospace;
+  background: #efe8da;
+  padding: 0 4px;
+  border-radius: 4px;
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.intestazione {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 16px;
+  background: #1f4d3a;
+  color: #f7f4ee;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.marca small {
+  display: block;
+  color: #d5e6dc;
+  font-size: 12px;
+}
+
+.logo {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: #f3efe4;
+  color: #1f4d3a;
+  font-weight: 700;
+}
+
+.azioni-file {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.azioni-file button,
+.primario {
+  border: 1px solid transparent;
+  background: #f7f4ee;
+  color: #1c1915;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.azioni-file .primario {
+  background: #f0c36a;
+  font-weight: 700;
+}
+
+.azioni-file button:hover,
+.primario:hover {
+  filter: brightness(0.97);
+}
+
+.scrivania {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  padding: 24px 16px 40px;
+}
+
+.aiuto {
+  margin: 8px 16px 0;
+  background: #f7f4ee;
+  border: 1px solid #d5cec0;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.aiuto summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.aiuto ul {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+
+.aiuto li + li {
+  margin-top: 4px;
+}
+
+.stato {
+  padding: 6px 16px;
+  background: #f7f4ee;
+  border-top: 1px solid #d5cec0;
+  font-size: 13px;
+  color: #4d463c;
+}

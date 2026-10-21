@@ -1,0 +1,307 @@
+.blocco-tabella {
+  position: relative;
+  margin: 10pt 0 14pt;
+}
+
+.blocco-tabella table,
+.tabella-stampa table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.blocco-tabella th {
+  border: 1px solid #c9c1b3;
+  padding: 4px 6px;
+}
+
+.blocco-tabella td,
+.tabella-stampa td {
+  padding: 4px 6px;
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+
+.blocco-tabella th {
+  background: #f3efe8;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  color: #6d655b;
+}
+
+.blocco-tabella thead th:first-child,
+.blocco-tabella tbody th {
+  width: 32px;
+}
+
+.angolo-tabella {
+  cursor: context-menu;
+}
+
+.angolo-tabella:hover {
+  background: #d7ebe1;
+}
+
+.blocco-tabella .tabella-comandi {
+  display: none;
+  position: absolute;
+  z-index: 7;
+  width: max-content;
+  max-width: min(520px, 92vw);
+  margin: 0;
+  padding: 6px;
+  background: #fffdf8;
+  border: 1px solid #d5cec0;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(40, 32, 18, 0.18);
+}
+
+.blocco-tabella .tabella-comandi.aperta {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: 8px;
+  width: min(240px, calc(100vw - 16px));
+  max-height: min(420px, calc(100vh - 16px));
+  overflow-y: auto;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.tabella-comandi-titolo {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.blocco-tabella .tabella-comandi label {
+  display: grid;
+  gap: 4px;
+  font-size: 13px;
+}
+
+.blocco-tabella .tabella-comandi input,
+.blocco-tabella .tabella-comandi select,
+.blocco-tabella .tabella-comandi button {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.blocco-tabella .tabella-comandi button {
+  border: 1px solid #d5cec0;
+  background: white;
+  color: #1c1915;
+  border-radius: 8px;
+  padding: 7px 10px;
+  font-size: 13px;
+}
+
+.blocco-tabella .tabella-comandi button[data-azione="chiudi-barra"] {
+  border-color: #1f4d3a;
+  background: #1f4d3a;
+  color: white;
+}
+
+.testa-colonna,
+.testa-riga {
+  position: relative;
+  user-select: none;
+}
+
+.etichetta-asse {
+  display: block;
+  cursor: grab;
+}
+
+.ridimensiona-colonna,
+.ridimensiona-riga {
+  position: absolute;
+  z-index: 3;
+}
+
+.ridimensiona-colonna {
+  top: 0;
+  right: -4px;
+  width: 8px;
+  height: 100%;
+  cursor: col-resize;
+}
+
+.ridimensiona-riga {
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 8px;
+  cursor: row-resize;
+}
+
+.ridimensiona-colonna:hover,
+.ridimensiona-riga:hover,
+.testa-colonna.bersaglio,
+tr.bersaglio > th {
+  background: #d7ebe1;
+}
+
+body.cursore-colonna,
+body.cursore-colonna * {
+  cursor: col-resize !important;
+}
+
+body.cursore-riga,
+body.cursore-riga * {
+  cursor: row-resize !important;
+}
+
+body.cursore-sposta,
+body.cursore-sposta * {
+  cursor: grabbing !important;
+}
+
+.blocco-tabella td {
+  background: white;
+  cursor: cell;
+  min-width: 0;
+}
+
+.blocco-tabella td.selezionata {
+  outline: 2px solid #1f4d3a;
+  outline-offset: -2px;
+  background: #e7f2ec;
+}
+
+.blocco-tabella td[colspan],
+.blocco-tabella td[rowspan] {
+  vertical-align: middle;
+}
+
+.parcheggio-celle {
+  display: none;
+}
+
+/* Triangolino nell'angolo: segnala la formula senza sembrare un bordo. */
+.blocco-tabella tbody tr td.cella-formula {
+  background-image: linear-gradient(135deg, #1f4d3a 0 5px, transparent 5px);
+  background-repeat: no-repeat;
+}
+
+.blocco-tabella tr[data-totale] td,
+.tabella-stampa tr.riga-totale td {
+  background: #f6f1e6;
+  font-weight: 600;
+}
+
+.blocco-tabella tr[data-totale] td.selezionata {
+  background: #e7f2ec;
+}
+
+.blocco-tabella td.cella-numero,
+.tabella-stampa td.cella-numero {
+  text-align: right;
+}
+
+.blocco-tabella td.cella-errore,
+.tabella-stampa td.cella-errore {
+  color: #8f1d1d;
+  text-align: left;
+}
+
+.blocco-tabella td.allinea-sinistra,
+.tabella-stampa td.allinea-sinistra {
+  text-align: left;
+}
+
+.blocco-tabella td.allinea-centro,
+.tabella-stampa td.allinea-centro {
+  text-align: center;
+}
+
+.blocco-tabella td.allinea-destra,
+.tabella-stampa td.allinea-destra {
+  text-align: right;
+}
+
+.misura-tabella {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.cornice-tabella {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
+.presa-tabella {
+  position: absolute;
+  background: #1f4d3a;
+  border: 2px solid #fffdf8;
+  border-radius: 3px;
+  z-index: 5;
+  pointer-events: auto;
+}
+
+.presa-tabella-angolo {
+  right: 2px;
+  bottom: 2px;
+  width: 16px;
+  height: 16px;
+  cursor: nwse-resize;
+}
+
+.presa-tabella-larghezza {
+  top: 50%;
+  right: 0;
+  width: 10px;
+  height: 28px;
+  transform: translateY(-50%);
+  cursor: ew-resize;
+}
+
+.presa-tabella-altezza {
+  left: 50%;
+  bottom: 0;
+  width: 28px;
+  height: 12px;
+  transform: translateX(-50%);
+  cursor: ns-resize;
+}
+
+.misura-tabella.posto-centro,
+.cornice-tabella.posto-centro {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.misura-tabella.posto-destra,
+.cornice-tabella.posto-destra {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.campo-bordi,
+.campo-posto {
+  border: 1px solid #d5cec0;
+  border-radius: 4px;
+  padding: 3px 6px;
+  background: white;
+  font-size: 12px;
+}
+
+.tabella-comandi button,
+.immagine-comandi button,
+.interruzione button {
+  border: 1px solid #d5cec0;
+  background: #fffdf8;
+  border-radius: 4px;
+  padding: 3px 6px;
+  font-size: 12px;
+}
+
+.tabella-attiva {
+  outline: 1px solid #1f4d3a;
+  outline-offset: 4px;
+}

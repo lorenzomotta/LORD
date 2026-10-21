@@ -1,0 +1,15 @@
+/* I collegamenti: blu e sottolineati come in Word. La manina compare solo con Ctrl premuto. */
+
+.testo-relazione a[href],
+.fascia-foglio a[href],
+.intestazione-stampa a[href],
+.pie-pagina a[href] {
+  color: #0563c1;
+  text-decoration: underline;
+  cursor: text;
+}
+
+body.tasto-ctrl #cornice-foglio a[href],
+#anteprima a[href] {
+  cursor: pointer;
+}

@@ -1,0 +1,66 @@
+/* La riga della formula si vede solo quando è selezionata una cella di tabella. */
+
+.barra-formula.nascosta {
+  display: none;
+}
+
+.barra-formula {
+  position: relative;
+}
+
+.elenco-formule {
+  position: static;
+  z-index: 25;
+}
+
+.pannello-formule {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 12px;
+  z-index: 25;
+  width: min(420px, calc(100vw - 24px));
+  max-height: min(420px, 60vh);
+  overflow: auto;
+  padding: 10px;
+  background: #fffdf8;
+  border: 1px solid #d5cec0;
+  border-radius: 8px;
+  box-shadow: 0 12px 28px rgba(28, 25, 21, 0.16);
+}
+
+.pannello-formule p {
+  margin: 0 0 8px;
+  font-size: 13px;
+}
+
+.pannello-formule ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pannello-formule li button {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  text-align: left;
+}
+
+.pannello-formule li span {
+  font-size: 13px;
+}
+
+.pannello-formule li code {
+  font-size: 12px;
+}
+
+#btn-formule[aria-expanded="true"] {
+  background: #1f4d3a;
+  color: #fffdf8;
+  border-color: #1f4d3a;
+}

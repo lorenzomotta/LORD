@@ -1,0 +1,40 @@
+/* Quando si stampa si vedono solo le pagine dell'anteprima, senza barre e senza ombre. */
+
+@media print {
+  body.in-stampa > *:not(#anteprima) {
+    display: none !important;
+  }
+
+  body.in-stampa {
+    margin: 0;
+    background: white;
+  }
+
+  body.in-stampa #anteprima {
+    position: static;
+    display: block;
+    background: white;
+  }
+
+  body.in-stampa .anteprima-barra {
+    display: none;
+  }
+
+  body.in-stampa .pila-pagine {
+    zoom: 1 !important;
+    overflow: visible;
+    padding: 0;
+  }
+
+  body.in-stampa .pagina {
+    margin: 0;
+    box-shadow: none;
+    break-after: page;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body.in-stampa .pagina:last-child {
+    break-after: auto;
+  }
+}

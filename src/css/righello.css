@@ -1,0 +1,213 @@
+/* Il righello sopra il foglio, con i segni delle tabulazioni. */
+
+.righello {
+  display: flex;
+  align-items: stretch;
+  height: 24px;
+  background: #e6e0d4;
+  border-bottom: 1px solid #d5cec0;
+  user-select: none;
+}
+
+.tipo-tabulazione {
+  flex: none;
+  width: 24px;
+  display: grid;
+  place-items: center;
+  margin: 2px 4px;
+  padding: 0;
+  border: 1px solid #d5cec0;
+  border-radius: 4px;
+  background: #fffdf8;
+  color: #1c1915;
+}
+
+.tipo-tabulazione:hover {
+  background: #efe8da;
+}
+
+.tipo-tabulazione svg,
+.segno-tabulazione svg {
+  width: 10px;
+  height: 10px;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.tipo-tabulazione svg circle,
+.segno-tabulazione svg circle {
+  fill: currentColor;
+  stroke: none;
+}
+
+.righello-pista {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  cursor: default;
+}
+
+/* La parte della pista che corrisponde alla pagina: grigia nei margini, bianca dove si scrive. */
+.righello-pagina {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  background: #d5cec0;
+}
+
+.righello-testo {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: #fffdf8;
+  cursor: copy;
+}
+
+.righello-tacche {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.righello-tacca {
+  position: absolute;
+  top: 7px;
+  width: 1px;
+  height: 4px;
+  background: #7d766a;
+}
+
+.righello-tacca.lunga {
+  top: 5px;
+  height: 8px;
+}
+
+.righello-numero {
+  position: absolute;
+  top: 1px;
+  transform: translateX(-50%);
+  font-size: 10px;
+  line-height: 16px;
+  color: #4d463c;
+}
+
+.righello-segni {
+  position: absolute;
+  inset: 0;
+}
+
+.segno-tabulazione {
+  position: absolute;
+  bottom: 0;
+  width: 10px;
+  height: 11px;
+  color: #1c1915;
+  cursor: ew-resize;
+}
+
+.segno-tabulazione.da-togliere {
+  opacity: 0.3;
+}
+
+/* I rientri: triangolo in alto (prima riga), triangolo e quadratino in basso a sinistra, triangolo in basso a destra. */
+.segno-rientro {
+  position: absolute;
+  z-index: 1;
+  width: 10px;
+  cursor: ew-resize;
+}
+
+.segno-rientro svg {
+  display: block;
+  width: 10px;
+  height: 100%;
+  fill: #fffdf8;
+  stroke: #4d463c;
+  stroke-width: 1;
+}
+
+.segno-rientro:hover svg {
+  fill: #f0c36a;
+}
+
+.rientro-prima {
+  top: 0;
+  height: 7px;
+}
+
+.rientro-sporgente {
+  bottom: 5px;
+  height: 7px;
+}
+
+.rientro-sinistra {
+  bottom: 0;
+  height: 5px;
+}
+
+.rientro-destra {
+  bottom: 0;
+  height: 7px;
+}
+
+.righello-pista.senza-paragrafo .righello-testo {
+  cursor: not-allowed;
+}
+
+/* Il confine del margine: la presa sta nella zona grigia, così non copre i triangolini dei rientri. */
+.maniglia-margine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  z-index: 0;
+  cursor: ew-resize;
+}
+
+.maniglia-margine.sinistra {
+  left: -12px;
+}
+
+.maniglia-margine.destra {
+  right: -12px;
+}
+
+.maniglia-margine::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  width: 2px;
+  background: #1f4d3a;
+}
+
+.maniglia-margine.sinistra::after {
+  right: 0;
+}
+
+.maniglia-margine.destra::after {
+  left: 0;
+}
+
+.guida-margine {
+  position: fixed;
+  pointer-events: none;
+  z-index: 15;
+}
+
+.guida-margine.verticale {
+  width: 0;
+  border-left: 1px dashed #1f4d3a;
+}
+
+/* La linea tratteggiata che scende sul foglio mentre si trascina una tabulazione. */
+.guida-tabulazione {
+  position: fixed;
+  bottom: 0;
+  width: 0;
+  border-left: 1px dashed #1f4d3a;
+  pointer-events: none;
+  z-index: 15;
+}

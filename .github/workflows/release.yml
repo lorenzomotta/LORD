@@ -1,0 +1,40 @@
+name: Pubblica Lord
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  pubblica:
+    permissions:
+      contents: write
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepara Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+
+      - name: Prepara Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Installa le dipendenze
+        run: npm ci
+
+      - name: Compila e pubblica la versione
+        uses: tauri-apps/tauri-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+        with:
+          tagName: v__VERSION__
+          releaseName: Lord v__VERSION__
+          releaseBody: Nuova versione di Lord. Le copie già installate possono aggiornarsi da sole all'avvio.
+          releaseDraft: false
+          prerelease: false
+          updaterJsonPreferNsis: true

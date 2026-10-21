@@ -1,0 +1,165 @@
+/* Colore del testo ed evidenziatore nella barra, e la tavolozza che si apre con la freccina. */
+
+.scelta-colore {
+  display: inline-flex;
+  align-items: stretch;
+}
+
+.scelta-colore button {
+  height: 35px;
+  border: 1px solid #d5cec0;
+  background: #fffdf8;
+  color: #1c1915;
+  cursor: pointer;
+}
+
+.scelta-colore button:hover {
+  background: #efe8da;
+}
+
+.scelta-colore .colore-metti {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 34px;
+  padding: 4px 7px;
+  border-radius: 6px 0 0 6px;
+}
+
+.scelta-colore .colore-apri {
+  padding: 0 5px;
+  border-left: 0;
+  border-radius: 0 6px 6px 0;
+  font-size: 10px;
+  line-height: 1;
+}
+
+.scelta-colore.aperta .colore-apri {
+  background: #efe8da;
+}
+
+.colore-segno {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.colore-segno svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.colore-barra {
+  display: block;
+  width: 20px;
+  height: 4px;
+  border-radius: 1px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18);
+}
+
+.tavolozza {
+  position: fixed;
+  z-index: 45;
+  padding: 10px;
+  background: #fffdf8;
+  border: 1px solid #d5cec0;
+  border-radius: 10px;
+  box-shadow: 0 16px 40px rgba(40, 32, 18, 0.25);
+  font-size: 12px;
+  color: #1c1915;
+}
+
+.tavolozza[hidden],
+.tavolozza [hidden] {
+  display: none;
+}
+
+.tavolozza-togli {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 5px 6px;
+  border: 1px solid #d5cec0;
+  border-radius: 6px;
+  background: white;
+  color: #1c1915;
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.tavolozza-togli:hover {
+  background: #efe8da;
+}
+
+/* Il quadratino barrato di "nessun colore". */
+.tavolozza-togli span:first-child {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #a59c8c;
+  border-radius: 3px;
+  background: linear-gradient(to top right, transparent 45%, #c00000 45%, #c00000 55%, transparent 55%), white;
+}
+
+.tavolozza-titolo {
+  margin: 8px 0 4px;
+  font-weight: 700;
+  color: #6d655b;
+}
+
+.tavolozza-titolo:first-of-type {
+  margin-top: 0;
+}
+
+.tavolozza-griglia {
+  display: grid;
+  grid-template-columns: repeat(10, 18px);
+  gap: 3px;
+}
+
+.tavolozza-griglia button {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+
+.tavolozza-griglia button:hover {
+  outline: 2px solid #1f4d3a;
+  outline-offset: 1px;
+}
+
+.tavolozza-altri {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid #e2dacb;
+  cursor: pointer;
+}
+
+.tavolozza-altri input {
+  width: 34px;
+  height: 22px;
+  padding: 0;
+  border: 1px solid #d5cec0;
+  border-radius: 4px;
+  cursor: pointer;
+}

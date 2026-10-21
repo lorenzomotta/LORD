@@ -1,0 +1,44 @@
+.zoom-contenitore.zoomata {
+  margin: 0 auto;
+}
+
+.zoom-contenitore.zoomata .cornice-foglio {
+  width: var(--pagina-larghezza, 210mm);
+  margin: 0;
+  transform-origin: 0 0;
+}
+
+.zoom-pagina {
+  position: fixed;
+  right: 16px;
+  bottom: 6px;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  background: #fffdf8;
+  border: 1px solid #d5cec0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(40, 32, 18, 0.12);
+  font-size: 12px;
+}
+
+.zoom-pagina button {
+  border: 0;
+  background: transparent;
+  color: #1c1915;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.zoom-pagina button:hover {
+  background: #e7f2ec;
+}
+
+#zoom-valore {
+  min-width: 46px;
+  font-variant-numeric: tabular-nums;
+}

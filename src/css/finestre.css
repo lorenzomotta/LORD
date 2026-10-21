@@ -1,0 +1,88 @@
+.finestra-sfondo {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: rgba(28, 25, 21, 0.45);
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+.finestra {
+  width: min(440px, 100%);
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+  background: #fffdf8;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 16px 40px rgba(40, 32, 18, 0.25);
+}
+
+.finestra h2 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.finestra p {
+  margin: 0 0 12px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.caselle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+}
+
+.caselle label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  border: 1px solid #d5cec0;
+  border-radius: 6px;
+  padding: 8px;
+  background: white;
+}
+
+.campo textarea {
+  resize: vertical;
+  min-height: 72px;
+  font: inherit;
+}
+  min-height: 1.2em;
+  color: #8f1d1d;
+  font-size: 13px;
+}
+
+.finestra-azioni {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.finestra-azioni button {
+  border: 1px solid #d5cec0;
+  background: #fffdf8;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.finestra-azioni .primario {
+  background: #1f4d3a;
+  color: white;
+  border-color: #1f4d3a;
+}

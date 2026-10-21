@@ -1,0 +1,38 @@
+/* Bordi delle celle. Quali lati hanno la linea lo decide bordi-tabella.js
+   con le classi senza-su / senza-giu / senza-sx / senza-dx. */
+
+.blocco-tabella td,
+.tabella-stampa td {
+  border: 1px solid #1c1915;
+}
+
+/* "hidden" vince sempre, anche sulla linea della cella vicina. */
+.blocco-tabella td.senza-su,
+.tabella-stampa td.senza-su {
+  border-top-style: hidden;
+}
+
+.blocco-tabella td.senza-giu,
+.tabella-stampa td.senza-giu {
+  border-bottom-style: hidden;
+}
+
+.blocco-tabella td.senza-sx,
+.tabella-stampa td.senza-sx {
+  border-left-style: hidden;
+}
+
+.blocco-tabella td.senza-dx,
+.tabella-stampa td.senza-dx {
+  border-right-style: hidden;
+}
+
+/* Le intestazioni (A, B, C… e 1, 2, 3…) non disegnano la linea verso le celle,
+   altrimenti coprirebbero la cornice della tabella con il loro grigio. */
+.blocco-tabella thead th {
+  border-bottom: none;
+}
+
+.blocco-tabella tbody th {
+  border-right: none;
+}

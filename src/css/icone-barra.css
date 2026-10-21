@@ -1,0 +1,88 @@
+/* Pulsanti a icona della barra e tendine con l'icona davanti (Interlinea, Spazio dopo). */
+
+.barra button.icona {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 4px;
+}
+
+.barra select {
+  padding-left: 5px;
+  padding-right: 3px;
+}
+
+.barra #font {
+  width: 140px;
+}
+
+.barra #dimensione {
+  width: 56px;
+}
+
+.barra #stile-paragrafo {
+  width: 105px;
+}
+
+.barra button[data-formato="bold"],
+.barra button[data-formato="italic"],
+.barra button[data-formato="underline"],
+.barra button[data-formato="strikeThrough"] {
+  padding: 6px 7px;
+}
+
+.barra .scelta-colore button {
+  height: 31px;
+}
+
+.barra .scelta-colore .colore-metti {
+  min-width: 28px;
+  padding: 4px 5px;
+}
+
+.barra .scelta-colore .colore-apri {
+  padding: 0 3px;
+}
+
+.barra button.icona svg,
+.scelta-con-icona svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* I pallini dell'elenco puntato: un tratto più spesso li fa sembrare punti. */
+.barra button.icona svg .punto {
+  stroke-width: 3.5;
+}
+
+.scelta-con-icona {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #d5cec0;
+  border-radius: 6px;
+  background: #fffdf8;
+  color: #1c1915;
+  cursor: pointer;
+}
+
+.scelta-con-icona svg {
+  flex: none;
+  margin-left: 5px;
+}
+
+.barra .scelta-con-icona select {
+  border: 0;
+  background: transparent;
+  padding-left: 2px;
+  cursor: pointer;
+}
+
+.scelta-con-icona:focus-within {
+  outline: 2px solid #1f4d3a;
+  outline-offset: -1px;
+}

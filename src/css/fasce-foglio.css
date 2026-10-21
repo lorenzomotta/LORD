@@ -1,0 +1,56 @@
+/* Intestazione e piè di pagina: stanno dentro i margini e si ripetono su ogni pagina. */
+
+.fascia-foglio,
+.specchio-fascia {
+  position: absolute;
+  z-index: 2;
+  left: var(--margine-sinistra, 18mm);
+  right: var(--margine-destra, 18mm);
+  overflow: auto;
+  font-family: Calibri, Carlito, "Segoe UI", sans-serif;
+  font-size: 11pt;
+  line-height: 1.15;
+  color: #4d463c;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.fascia-foglio {
+  outline: none;
+}
+
+.fascia-foglio:focus {
+  outline: 1px dashed #1f4d3a;
+  outline-offset: 2px;
+}
+
+.fascia-intestazione {
+  top: var(--distanza-intestazione, 2mm);
+  height: calc(var(--margine-sopra, 18mm) - var(--distanza-intestazione, 2mm) - 2mm);
+  min-height: 0;
+}
+
+.fascia-pie {
+  top: calc(var(--pagina-altezza, 297mm) - var(--margine-sotto, 22mm) + 1mm);
+  height: calc(var(--margine-sotto, 22mm) - 10mm);
+  min-height: 8mm;
+}
+
+.fascia-foglio.vuota::before {
+  content: attr(data-vuoto);
+  color: #9a9286;
+  pointer-events: none;
+}
+
+.specchio-fascia {
+  z-index: 2;
+  pointer-events: none;
+}
+
+.specchio-intestazione {
+  top: var(--distanza-intestazione, 2mm);
+}
+
+.specchio-pie {
+  bottom: 10mm;
+}

@@ -1,0 +1,129 @@
+.menu-testo {
+  position: fixed;
+  z-index: 40;
+  width: min(280px, calc(100vw - 16px));
+  max-height: calc(100vh - 16px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 12px;
+  background: #fffdf8;
+  border: 1px solid #d5cec0;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(40, 32, 18, 0.25);
+}
+
+.menu-testo[hidden] {
+  display: none;
+}
+
+.menu-testo-titolo {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.azioni-testo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.azioni-testo button,
+#menu-testo-chiudi {
+  border: 1px solid #d5cec0;
+  background: white;
+  color: #1c1915;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 13px;
+}
+
+.menu-testo button.premuto {
+  background: #1f4d3a;
+  color: #fffdf8;
+  border-color: #1f4d3a;
+}
+
+.voce-testo {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.voce-testo select {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #d5cec0;
+  background: white;
+  border-radius: 6px;
+  padding: 6px 8px;
+  color: #1c1915;
+  font-size: 13px;
+}
+
+/* Nella prima riga i pulsanti colore hanno la stessa altezza di G, C, S, B. */
+.azioni-testo .scelta-colore button {
+  height: 31px;
+}
+
+/* Elenco puntato, elenco numerato e collegamento: icone della stessa altezza di G, C, S, B. */
+.azioni-testo button.icona {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 31px;
+  height: 31px;
+  padding: 0;
+}
+
+.azioni-testo button.icona svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.azioni-testo button.icona svg .punto {
+  stroke-width: 3.5;
+}
+
+.azioni-testo .scelta-colore .colore-metti {
+  min-width: 30px;
+  padding: 3px 6px;
+}
+
+.voci-affiancate {
+  display: grid;
+  grid-template-columns: 1fr 76px;
+  gap: 8px;
+}
+
+.voci-affiancate.voci-paragrafo {
+  grid-template-columns: 1fr 58px 76px;
+  gap: 6px;
+}
+
+.voci-paragrafo select {
+  padding-left: 5px;
+  padding-right: 2px;
+}
+
+.voci-affiancate .voce-testo {
+  min-width: 0;
+  white-space: nowrap;
+}
+
+#menu-testo-chiudi {
+  width: 100%;
+  margin-top: 4px;
+  border-color: #1f4d3a;
+  background: #1f4d3a;
+  color: white;
+  border-radius: 8px;
+  padding: 7px 10px;
+}

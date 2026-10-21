@@ -1,0 +1,125 @@
+.pannello-asse {
+  position: fixed;
+  z-index: 40;
+  width: min(260px, calc(100vw - 16px));
+  max-height: calc(100vh - 16px);
+  overflow-y: auto;
+  padding: 12px;
+  background: #fffdf8;
+  border: 1px solid #d5cec0;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(40, 32, 18, 0.25);
+}
+
+.pannello-asse[hidden] {
+  display: none;
+}
+
+.pannello-asse-titolo,
+.asse-gruppo {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.asse-gruppo {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #5c564c;
+}
+
+.asse-voce {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.asse-voce input,
+.asse-voce select,
+#asse-imposta,
+#asse-nascondi,
+#asse-chiudi {
+  border: 1px solid #d5cec0;
+  background: white;
+  color: #1c1915;
+  border-radius: 8px;
+  padding: 7px 8px;
+  font-size: 13px;
+}
+
+#asse-imposta,
+#asse-nascondi,
+#asse-chiudi {
+  width: 100%;
+  margin-bottom: 6px;
+}
+
+#asse-chiudi {
+  margin-top: 8px;
+  margin-bottom: 0;
+  border-color: #1f4d3a;
+  background: #1f4d3a;
+  color: white;
+}
+
+.asse-stili {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.asse-stili button {
+  border: 1px solid #d5cec0;
+  background: white;
+  color: #1c1915;
+  border-radius: 8px;
+  padding: 6px 0;
+  font-size: 14px;
+}
+
+.asse-stili button.acceso {
+  border-color: #1f4d3a;
+  background: #e7f2ec;
+  color: #1f4d3a;
+}
+
+.asse-colori {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+  font-size: 13px;
+}
+
+.asse-colori > span {
+  flex: 1;
+}
+
+.blocco-tabella th.asse-scelto,
+.blocco-tabella tr.asse-scelto > th {
+  background: #d7ebe1;
+  box-shadow: inset 0 0 0 2px #1f4d3a;
+}
+
+.blocco-tabella th.asse-nascosto,
+.blocco-tabella tr.riga-nascosta > th {
+  overflow: hidden;
+  color: #8a8175;
+  background: repeating-linear-gradient(135deg, #f7f4ee, #f7f4ee 3px, #e7dfd2 3px, #e7dfd2 6px);
+}
+
+.blocco-tabella th.asse-nascosto .etichetta-asse,
+.blocco-tabella tr.riga-nascosta .etichetta-asse {
+  font-size: 10px;
+}
+
+.blocco-tabella td.cella-nascosta {
+  color: transparent !important;
+  font-size: 0 !important;
+  line-height: 0;
+  padding: 0;
+  background: repeating-linear-gradient(135deg, #f7f4ee, #f7f4ee 3px, #e7dfd2 3px, #e7dfd2 6px) !important;
+}

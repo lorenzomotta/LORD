@@ -1,0 +1,22 @@
+/* Un commento è un appunto attaccato a delle parole: si vede in giallo e, passandoci sopra, si legge. */
+
+#menu-testo-commento {
+  width: 100%;
+  margin: 0 0 8px;
+  border: 1px solid #d5cec0;
+  background: white;
+  color: #1c1915;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 13px;
+}
+
+.commento {
+  background: #fff3c4;
+  border-bottom: 1px dashed #a6842c;
+  cursor: help;
+}
+
+.commento:hover {
+  background: #ffe08a;
+}

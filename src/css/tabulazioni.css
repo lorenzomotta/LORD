@@ -1,0 +1,8 @@
+/* Il salto del tasto Tab: la larghezza la calcola tabulazioni.js, il carattere dentro non occupa spazio. */
+
+.tabulazione {
+  display: inline-block;
+  width: 12.7mm;
+  white-space: pre;
+  tab-size: 0;
+}

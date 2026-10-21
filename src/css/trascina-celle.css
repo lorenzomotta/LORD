@@ -1,0 +1,42 @@
+.blocco-tabella td.angolo-selezione {
+  position: relative;
+}
+
+.blocco-tabella td.angolo-selezione::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  width: 7px;
+  height: 7px;
+  background: #1f4d3a;
+  border: 1px solid white;
+  box-sizing: border-box;
+  cursor: crosshair;
+}
+
+body.sopra-quadratino .blocco-tabella td.selezionata,
+body.cursore-riempi,
+body.cursore-riempi * {
+  cursor: crosshair !important;
+}
+
+body.sopra-bordo-selezione .blocco-tabella td.selezionata {
+  cursor: move;
+}
+
+body.cursore-sposta-celle,
+body.cursore-sposta-celle * {
+  cursor: move !important;
+}
+
+.blocco-tabella td.anteprima-riempi {
+  outline: 2px dashed #1f4d3a;
+  outline-offset: -2px;
+}
+
+.blocco-tabella td.anteprima-sposta {
+  outline: 2px dashed #c27a1a;
+  outline-offset: -2px;
+  background-color: #fbf1e3;
+}

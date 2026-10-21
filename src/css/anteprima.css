@@ -1,0 +1,112 @@
+.anteprima {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  background: #d9d2c5;
+  display: flex;
+  flex-direction: column;
+}
+
+.anteprima.nascosta {
+  display: none;
+}
+
+.anteprima-barra {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: #1f4d3a;
+  color: #f7f4ee;
+}
+
+.anteprima-barra button,
+.anteprima-barra select {
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background: #f7f4ee;
+  color: #1c1915;
+  white-space: nowrap;
+}
+
+.pila-pagine {
+  flex: 1;
+  overflow: auto;
+  padding: 20px 12px 40px;
+}
+
+.pagina {
+  width: var(--pagina-larghezza, 210mm);
+  height: var(--pagina-altezza, 297mm);
+  margin: 0 auto 18px;
+  background: white;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(40, 32, 18, 0.18);
+}
+
+.corpo-pagina {
+  position: absolute;
+  top: var(--margine-sopra, 18mm);
+  left: var(--margine-sinistra, 18mm);
+  right: var(--margine-destra, 18mm);
+  bottom: var(--margine-sotto, 22mm);
+  overflow: hidden;
+}
+
+.intestazione-stampa,
+.pie-pagina {
+  position: absolute;
+  left: var(--margine-sinistra, 18mm);
+  right: var(--margine-destra, 18mm);
+  overflow: hidden;
+  font-family: Calibri, Carlito, "Segoe UI", sans-serif;
+  font-size: 11pt;
+  line-height: 1.15;
+  color: #4d463c;
+}
+
+.intestazione-stampa {
+  top: var(--distanza-intestazione, 2mm);
+  max-height: calc(var(--margine-sopra, 18mm) - var(--distanza-intestazione, 2mm) - 2mm);
+}
+
+.pie-pagina {
+  bottom: 2mm;
+  max-height: calc(var(--margine-sotto, 22mm) - 4mm);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 2px;
+}
+
+.allinea-sinistra {
+  text-align: left;
+}
+
+.allinea-centro {
+  text-align: center;
+}
+
+.allinea-destra {
+  text-align: right;
+}
+
+.corpo-pagina,
+.misuratore,
+.vista-documento {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.misuratore,
+.vista-documento.fuori-schermo {
+  position: absolute;
+  left: -4000px;
+  top: 0;
+  width: var(--pagina-testo, 174mm);
+}
+
+.conto-pagine {
+  font-weight: 700;
+}

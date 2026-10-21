@@ -1,0 +1,139 @@
+.menu-cella {
+  position: fixed;
+  z-index: 40;
+  width: min(280px, calc(100vw - 16px));
+  max-height: calc(100vh - 16px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 12px;
+  background: #fffdf8;
+  border: 1px solid #d5cec0;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(40, 32, 18, 0.25);
+}
+
+.menu-cella[hidden] {
+  display: none;
+}
+
+.menu-cella-titolo {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.gruppo-menu {
+  margin: 8px 0 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #5c564c;
+}
+
+.azioni-struttura {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.azioni-struttura button {
+  border: 1px solid #d5cec0;
+  background: white;
+  color: #1c1915;
+  border-radius: 8px;
+  padding: 7px 8px;
+  font-size: 13px;
+}
+
+.stili-cella {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.stili-cella button {
+  border: 1px solid #d5cec0;
+  background: white;
+  color: #1c1915;
+  border-radius: 8px;
+  padding: 6px 0;
+  font-size: 14px;
+}
+
+.stili-cella button.acceso {
+  border-color: #1f4d3a;
+  background: #e7f2ec;
+  color: #1f4d3a;
+}
+
+.colori-cella {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.colori-cella > span {
+  flex: 1;
+}
+
+.colori-cella .scelta-colore button {
+  height: 31px;
+}
+
+.voce-menu {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.voce-menu:has(input[type="color"]) {
+  grid-template-columns: 1fr auto auto;
+}
+
+.voce-menu select,
+.voce-menu button {
+  border: 1px solid #d5cec0;
+  background: white;
+  border-radius: 6px;
+  padding: 4px 6px;
+  font-size: 13px;
+}
+
+.voce-menu select,
+.voce-menu input.misura-testo {
+  grid-column: 1 / -1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.voce-menu input[type="color"] {
+  width: 42px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid #d5cec0;
+  background: white;
+  border-radius: 6px;
+}
+
+.azione-menu,
+#menu-cella-chiudi {
+  width: 100%;
+  margin-top: 4px;
+  border: 1px solid #d5cec0;
+  background: white;
+  color: #1c1915;
+  border-radius: 8px;
+  padding: 7px 10px;
+}
+
+#menu-cella-chiudi {
+  border-color: #1f4d3a;
+  background: #1f4d3a;
+  color: white;
+}
